@@ -1,5 +1,5 @@
 package rockets.model;
-//CONFLICT
+
 import java.util.Objects;
 
 import static org.apache.commons.lang3.Validate.notBlank;
