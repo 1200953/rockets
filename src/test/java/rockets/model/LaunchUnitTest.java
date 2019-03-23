@@ -30,12 +30,12 @@ class LaunchUnitTest {
         assertEquals("launch date cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty launch date to setLaunchDate function")
+    @DisplayName("Should throw exception when set a launch date before 1900-01-01")
     @Test
     public void shouldThrowExceptionWhenSetLaunchDateToEmpty() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
-                -> target.setLaunchDate(LocalDate.of(0,0,0)));
-        assertEquals("launch date cannot be null or empty", exception.getMessage());
+                -> target.setLaunchDate(LocalDate.of(1899,1,1)));
+        assertEquals("launch date cannot be earlier than 1900-01-01", exception.getMessage());
     }
 
     @DisplayName("Should return date format in YYYY-MM-DD")
@@ -53,6 +53,7 @@ class LaunchUnitTest {
         assertEquals("payload cannot be null or empty", exception.getMessage());
     }
 
+    //Todo - Payload need to be updated instead of pass empty value
     @DisplayName("Should throw exception when pass an empty payload to setPayload function")
     @Test
     public void shouldThrowExceptionWhenSetPayloadToEmpty() {
@@ -116,15 +117,39 @@ class LaunchUnitTest {
     @Test
     public void shouldThrowExceptionWhenSetPriceToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setPrice(null));
-        assertEquals("price cannot be null or empty", exception.getMessage());
+        assertEquals("price cannot be null", exception.getMessage());
     }
 
     @DisplayName("Should not be negative price")
     @Test
-    public void shouldThrowExceptionWhenSetPriceToEmpty(String function) {
-        BigDecimal price = BigDecimal.;
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
-                -> target.setFunction(function));
-        assertEquals("function cannot be null or empty", exception.getMessage());
+    public void shouldThrowExceptionWhenSetPriceToNegative() {
+        BigDecimal price = new BigDecimal("-1");
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setPrice(price));
+        assertEquals("price cannot be negative", exception.getMessage());
+    }
+
+    //Launch Outcome
+    @DisplayName("Should throw exception when pass a null launch outcome to setLaunchOutcome function")
+    @Test
+    public void shouldThrowExceptionWhenSetLaunchOutcomeToNull() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setLaunchOutcome(null));
+        assertEquals("launch outcome cannot be null", exception.getMessage());
+    }
+
+    @DisplayName("Should return set value")
+    @ParameterizedTest
+    @ValueSource(strings = {"SUCCESSFUL", "FAILED"})
+    public void shouldReturnSetValue(String launchOutcome) {
+        target.setLaunchOutcome(Launch.LaunchOutcome.valueOf(launchOutcome));
+        assertEquals(Launch.LaunchOutcome.valueOf(launchOutcome), target.getLaunchOutcome());
+    }
+
+    @DisplayName("Should throw exception when pass a value not SUCCESSFUL or FAILED")
+    @ParameterizedTest
+    @ValueSource(strings = {"INVALID"})
+    public void shouldThrowExceptionWhenSetLaunchOutcomeToInvalidValue(String launchOutcome) {
+        NullPointerException exception = assertThrows(NullPointerException.class, ()
+                -> target.setLaunchOutcome(Launch.LaunchOutcome.valueOf(launchOutcome)));
+        assertEquals("launch outcome cannot be set in invalid value", exception.getMessage());
     }
 }
