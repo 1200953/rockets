@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
+import static org.apache.commons.lang3.Validate.notBlank;
+import static org.apache.commons.lang3.Validate.notNull;
+
 public class Launch extends Entity {
     public enum LaunchOutcome {
         FAILED, SUCCESSFUL
@@ -32,8 +35,15 @@ public class Launch extends Entity {
         return launchDate;
     }
 
-    public void setLaunchDate(LocalDate launchDate) {
-        this.launchDate = launchDate;
+    public String setLaunchDate(LocalDate launchDate) {
+        notNull(launchDate,"launch date cannot be null");
+        if (isNotBefore19000101(launchDate)){
+            this.launchDate = launchDate;
+            return null;
+        }
+        else {
+            return "launch date cannot before 1900-01-01";
+        }
     }
 
     public Rocket getLaunchVehicle() {
@@ -57,6 +67,7 @@ public class Launch extends Entity {
     }
 
     public void setPayload(Set<String> payload) {
+        notNull(payload, "payload cannot be null");
         this.payload = payload;
     }
 
@@ -65,6 +76,7 @@ public class Launch extends Entity {
     }
 
     public void setLaunchSite(String launchSite) {
+        notBlank(launchSite, "launch site cannot be null or empty");
         this.launchSite = launchSite;
     }
 
@@ -73,6 +85,7 @@ public class Launch extends Entity {
     }
 
     public void setOrbit(String orbit) {
+        notBlank(orbit, "orbit cannot be null or empty");
         this.orbit = orbit;
     }
 
@@ -81,6 +94,7 @@ public class Launch extends Entity {
     }
 
     public void setFunction(String function) {
+        notBlank(function, "function cannot be null or empty");
         this.function = function;
     }
 
@@ -88,8 +102,13 @@ public class Launch extends Entity {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public String setPrice(BigDecimal price) {
+        notNull(price, "price cannot be null");
+        if (isPositive(price)) {
+            this.price = price;
+            return null;
+        }
+        return "price cannot be negative";
     }
 
     public LaunchOutcome getLaunchOutcome() {
@@ -97,6 +116,7 @@ public class Launch extends Entity {
     }
 
     public void setLaunchOutcome(LaunchOutcome launchOutcome) {
+        notNull(launchOutcome, "launch outcome cannot be null");
         this.launchOutcome = launchOutcome;
     }
 
@@ -114,5 +134,14 @@ public class Launch extends Entity {
     @Override
     public int hashCode() {
         return Objects.hash(launchDate, launchVehicle, launchServiceProvider, orbit);
+    }
+
+    private boolean isNotBefore19000101(LocalDate date) {
+        return date.isAfter(LocalDate.of(1899, 12, 31));
+    }
+
+    private boolean isPositive(BigDecimal price) {
+        BigDecimal zero = new BigDecimal(0);
+        return price.compareTo(zero) > 0;
     }
 }
