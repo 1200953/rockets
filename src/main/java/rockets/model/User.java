@@ -73,6 +73,4 @@ public class User extends Entity {
                 '}';
     }
 
-    //This is Wenchu
-    //Do it again
 }
