@@ -72,5 +72,4 @@ public class User extends Entity {
                 ", email='" + email + '\'' +
                 '}';
     }
-    // This is Wenchu
 }
