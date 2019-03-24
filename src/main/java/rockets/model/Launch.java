@@ -2,6 +2,7 @@ package rockets.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class Launch extends Entity {
             return null;
         }
         else {
-            return "launch date cannot before 1900-01-01";
+            return "launch date should pass 1900-01-01";
         }
     }
 
@@ -68,7 +69,15 @@ public class Launch extends Entity {
 
     public void setPayload(Set<String> payload) {
         notNull(payload, "payload cannot be null");
-        this.payload = payload;
+        Iterator value = payload.iterator();
+        while(value.hasNext())
+        {
+            if(value.next().toString().trim().equals(""))
+                throw new IllegalArgumentException("payload cannot be null or empty");
+            else
+                this.payload = payload;
+        }
+
     }
 
     public String getLaunchSite() {

@@ -1,5 +1,7 @@
 package rockets.model;
 
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -29,7 +35,7 @@ class LaunchUnitTest {
     @DisplayName("Should throw exception when set a launch date before 1900-01-01")
     @Test
     public void shouldNotBefore19000101() {
-        assertEquals("launch date cannot before 1900-01-01",
+        assertEquals("launch date should pass 1900-01-01",
                 target.setLaunchDate(LocalDate.of(1899,12,31)));
     }
 
@@ -41,7 +47,7 @@ class LaunchUnitTest {
     }
 
     //Payload
-    @DisplayName("Should throw exception when pass a null payload to setPayload function")
+    @DisplayName("Should throw exception when pass a null to setPayload function")
     @Test
     public void shouldThrowExceptionWhenSetPayloadToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setPayload(null));
@@ -49,13 +55,15 @@ class LaunchUnitTest {
     }
 
     //TODO - Payload need to be updated instead of pass empty value
-//    @DisplayName("Should throw exception when pass an empty payload to setPayload function")
-//    @Test
-//    public void shouldThrowExceptionWhenSetPayloadToEmpty() {
-//        Set<String> set = new HashSet<>();
-//        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setPayload(set));
-//        assertEquals("payload cannot be null or empty", exception.getMessage());
-//    }
+    @DisplayName("Should throw exception when pass a set with empty string to setPayload function")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "  "})
+    public void shouldThrowExceptionWhenSetPayloadToEmpty(String payroll) {
+        Set<String> set = new HashSet<>();
+        set.add(payroll);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setPayload(set));
+        assertEquals("payload cannot be null or empty", exception.getMessage());
+    }
 
     //Launch Site
     @DisplayName("Should throw exception when pass a null launch site to setLaunchSite function")
