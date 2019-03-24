@@ -26,7 +26,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when initialize name into an empty string")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -44,7 +44,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when initialize country into an empty string")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -53,8 +53,8 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when initialize country with uncapitalized words")
-    @ParameterizedTest
-    @ValueSource(strings = {"the unit state", "the people Republic of china", "british"})
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Rocket("abc", country,
                 "Tesla"));
@@ -71,7 +71,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when when initialize manufacturer into empty string")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetManufacturerToEmpty(String manufacturer) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -89,7 +89,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty string to setMassToLEO function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToLEOToEmpty(String massToLEO) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -107,7 +107,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty string to setMassToGTO function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToGTOToEmpty(String massToGTO) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -125,7 +125,7 @@ class RocketUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty string to setMassToOther function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToOtherToEmpty(String massToOther) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()

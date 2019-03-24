@@ -25,7 +25,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     @DisplayName("should throw exception when initialize country to an empty string")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -35,7 +35,7 @@ class LaunchServiceProviderUnitTest {
 
     //yearFounded
     @DisplayName("should throw exception when initialize yearFounded outside of 1900 to current year")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(ints = {1, 1899, 2020})
     public void shouldThrowWhenSetYearFoundedToNull(int yearFounded) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -53,7 +53,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     @DisplayName("should throw exception when initialize country name to an empty string")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -62,7 +62,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     @DisplayName("should throw exception when initialize country with uncapitalized words with in constructor")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -80,7 +80,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     @DisplayName("should throw exception when pass an empty string to setHeadquarters function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetHeadquartersToEmpty(String headquarters) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -89,7 +89,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     @DisplayName("should return headquarters when pass a valid name to setHeadquarters function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnHeadquartersWhenSetValidHeadquarters(String headquarters) {
         target.setHeadquarters(headquarters);

@@ -17,7 +17,7 @@ public class UserUnitTest {
 
     //email
     @DisplayName("should throw exception when pass a empty email address to setEmail function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetEmailToEmpty(String email) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setEmail(email));
@@ -32,14 +32,14 @@ public class UserUnitTest {
     }
 
     @DisplayName("should return true when pass a valid email")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"asjdoanf@gmail.com", "asdad@student.monash.edu"})
     public void shouldReturnTrueWhenPassAValidEmail(String email) {
         assertTrue(target.isValidEmail(email));
     }
 
     @DisplayName("should return false when pass an invalid email")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"emailaddress", "emailaddress@.com.au", "email@address@gmail.com"})
     public void shouldReturnFalseWhenPassAnInvalidEmail(String email) {
         assertFalse(target.isValidEmail(email));
@@ -74,7 +74,7 @@ public class UserUnitTest {
     }
 
     @DisplayName("should throw exception when pass a empty password to setPassword function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetPasswordToEmpty(String email) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -83,14 +83,14 @@ public class UserUnitTest {
     }
 
     @DisplayName("should return true when pass a valid password")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Abc1&23*21", "ajs3do2s&BN1SD"})
     public void shouldReturnTrueWhenPassAValidPassword(String password) {
         assertTrue(target.isValidPassword(password));
     }
 
     @DisplayName("should return false when pass an invalid email")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"adan123*da", "ADAN123*", "Aa1!x25s", "Aa1! adana", "adas123aAsd1"})
     public void shouldReturnFalseWhenPassAnInvalidPassword(String password) {
         assertFalse(target.isValidPassword(password));
@@ -98,7 +98,7 @@ public class UserUnitTest {
 
     //firstName
     @DisplayName("should throw exception when pass a empty value to setFirstName function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFirstNameToEmpty(String firstName) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -115,7 +115,7 @@ public class UserUnitTest {
 
     //lastName
     @DisplayName("should throw exception when pass a empty value to setLastName function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetLastNameToEmpty(String lastName) {
         NullPointerException exception = assertThrows(NullPointerException.class, ()

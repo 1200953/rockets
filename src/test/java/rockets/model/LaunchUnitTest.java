@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LaunchUnitTest {
@@ -56,7 +58,7 @@ class LaunchUnitTest {
 
     //TODO - Payload need to be updated instead of pass empty value
     @DisplayName("Should throw exception when pass a set with empty string to setPayload function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetPayloadToEmpty(String payroll) {
         Set<String> set = new HashSet<>();
@@ -74,7 +76,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty launch site to setLaunchSite function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetLaunchSiteToEmpty(String launchSite) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -83,7 +85,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("should return launch site when pass a valid launch site")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnLaunchSiteWhenSetValidLaunchSite(String launchSite) {
         target.setLaunchSite(launchSite);
@@ -99,7 +101,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty orbit to setOrbit function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetOrbitToEmpty(String orbit) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setOrbit(orbit));
@@ -107,7 +109,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("should return orbit when pass a valid orbit")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnOrbitWhenSetValidOrbit(String orbit) {
         target.setOrbit(orbit);
@@ -123,7 +125,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("Should throw exception when pass an empty function to setFunction function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFunctionToEmpty(String function) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
@@ -132,7 +134,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("should return function when pass a valid function")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnFunctionWhenSetValidFunction(String function) {
         target.setFunction(function);
@@ -155,7 +157,7 @@ class LaunchUnitTest {
     }
 
     @DisplayName("should return price when pass a valid price")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(longs = {15325336, 375975982, 459348538})
     public void shouldReturnPriceWhenSetValidPrice(long price) {
         target.setPrice(BigDecimal.valueOf(price));
@@ -170,35 +172,16 @@ class LaunchUnitTest {
         assertEquals("launch outcome cannot be null", exception.getMessage());
     }
 
-    @DisplayName("Should return set value")
-    @ParameterizedTest
-    @ValueSource(strings = {"SUCCESSFUL", "FAILED"})
-    public void shouldReturnSetValue(String launchOutcome) {
-        target.setLaunchOutcome(Launch.LaunchOutcome.valueOf(launchOutcome));
-        assertEquals(Launch.LaunchOutcome.valueOf(launchOutcome), target.getLaunchOutcome());
-    }
 
-    @DisplayName("should return SUCCESSFUL when pass a SUCCESSFUL launch outcome")
-    @Test
-    public void shouldReturnSUCCESSFUL() {
-        target.setLaunchOutcome(Launch.LaunchOutcome.SUCCESSFUL);
-        assertEquals(Launch.LaunchOutcome.SUCCESSFUL, target.getLaunchOutcome());
-    }
-
-    @DisplayName("should return FAILED when pass a FAILED launch outcome")
-    @Test
-    public void shouldReturnFAILED() {
-        target.setLaunchOutcome(Launch.LaunchOutcome.FAILED);
-        assertEquals(Launch.LaunchOutcome.FAILED, target.getLaunchOutcome());
-    }
-
-    //TODO - Cannot figure it out
-//    @DisplayName("Should throw exception when pass a value not SUCCESSFUL or FAILED")
-//    @ParameterizedTest
-//    @ValueSource(strings = {"INVALID"})
-//    public void shouldThrowExceptionWhenSetLaunchOutcomeToInvalidValue(String launchOutcome) {
+    //TODO - Cannot figure it out(Q1 SOLVED 24/03 ANDY)
+    @DisplayName("Should return true when pass SUCCESSFUL or FAILED")
+    @ParameterizedTest(name = "Enum type: {0}")
+    @EnumSource(value = Launch.LaunchOutcome.class,
+            names = {"SUCCESSFUL", "FAILED"})
+    public void shouldReturnTrueIfEnumTypesAreCorrect(Launch.LaunchOutcome launch) {
+        assertNotNull(launch);
 //        Exception exception = assertThrows(Exception.class, ()
-//                -> target.setLaunchOutcome(Launch.LaunchOutcome.valueOf(launchOutcome)));
+//                -> target.setLaunchOutcome(launch));
 //        assertEquals("launch outcome cannot be set in invalid value", exception.getMessage());
-//    }
+    }
 }
