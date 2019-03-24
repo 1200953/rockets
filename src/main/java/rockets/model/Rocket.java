@@ -1,8 +1,7 @@
 package rockets.model;
 
 import java.util.Objects;
-
-import static org.apache.commons.lang3.Validate.notNull;
+import static org.apache.commons.lang3.Validate.notBlank;
 
 public class Rocket extends Entity {
     private String name;
@@ -25,12 +24,17 @@ public class Rocket extends Entity {
      * @param manufacturer
      */
     public Rocket(String name, String country, String manufacturer) {
-        notNull(name);
-        notNull(country);
-        notNull(manufacturer);
+        notBlank(name, "name cannot be null or empty");
+        notBlank(country, "country cannot be null or empty");
+        notBlank(manufacturer, "manufacturer cannot be null or empty");
 
         this.name = name;
-        this.country = country;
+        if (isCountry(country)) {
+            this.country = country;
+        }
+        else {
+            throw new RuntimeException("Country should be capitalized on each word");
+        }
         this.manufacturer = manufacturer;
     }
 
@@ -59,14 +63,17 @@ public class Rocket extends Entity {
     }
 
     public void setMassToLEO(String massToLEO) {
+        notBlank(massToLEO, "mass to LEO cannot be null or empty");
         this.massToLEO = massToLEO;
     }
 
     public void setMassToGTO(String massToGTO) {
+        notBlank(massToGTO, "mass to GTO cannot be null or empty");
         this.massToGTO = massToGTO;
     }
 
     public void setMassToOther(String massToOther) {
+        notBlank(massToOther, "mass to Other cannot be null or empty");
         this.massToOther = massToOther;
     }
 
@@ -95,5 +102,15 @@ public class Rocket extends Entity {
                 ", massToGTO='" + massToGTO + '\'' +
                 ", massToOther='" + massToOther + '\'' +
                 '}';
+    }
+
+    private boolean isCountry(String country) {
+        String[] Words = country.split(" ");
+        for (String w : Words) {
+            if (!Character.isUpperCase(w.charAt(0))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
