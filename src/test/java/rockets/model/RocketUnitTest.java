@@ -17,7 +17,7 @@ class RocketUnitTest {
     }
 
     //Name
-    @DisplayName("Should throw exception when pass a null name to create rocket object")
+    @DisplayName("Should throw exception when initialize name into null")
     @Test
     public void shouldThrowWhenSetNameToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -25,7 +25,7 @@ class RocketUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty name to create rocket object")
+    @DisplayName("Should throw exception when initialize name into an empty string")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
@@ -35,7 +35,7 @@ class RocketUnitTest {
     }
 
     //Country
-    @DisplayName("Should throw exception when pass a null country to create rocket object")
+    @DisplayName("Should throw exception when initialize country into null")
     @Test
     public void shouldThrowExceptionWhenSetCountryToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -43,7 +43,7 @@ class RocketUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty country to create rocket object")
+    @DisplayName("Should throw exception when initialize country into an empty string")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
