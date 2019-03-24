@@ -16,7 +16,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //name
-    @DisplayName("Should throw exception when pass a null name to create LaunchServiceProvider object")
+    @DisplayName("should throw exception when pass a null name to create LaunchServiceProvider object")
     @Test
     public void shouldThrowWhenSetNameToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -24,7 +24,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty name to create LaunchServiceProvider object")
+    @DisplayName("should throw exception when pass an empty name to create LaunchServiceProvider object")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
@@ -34,7 +34,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //yearFounded
-    @DisplayName("Should throw exception when pass a year founded not between 1900 to present year to create " +
+    @DisplayName("should throw exception when pass a year founded not between 1900 to present year to create " +
             "LaunchServiceProvider object")
     @ParameterizedTest
     @ValueSource(ints = {1, 1899, 2020})
@@ -45,7 +45,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //country
-    @DisplayName("Should throw exception when pass a null country to create LaunchServiceProvider object")
+    @DisplayName("should throw exception when pass a null country to create LaunchServiceProvider object")
     @Test
     public void shouldThrowExceptionWhenSetCountryToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -53,7 +53,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty country to create LaunchServiceProvider object")
+    @DisplayName("should throw exception when pass an empty country to create LaunchServiceProvider object")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
@@ -62,7 +62,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an uncapitalized country to create LaunchServiceProvider object")
+    @DisplayName("should throw exception when pass an uncapitalized country to create LaunchServiceProvider object")
     @ParameterizedTest
     @ValueSource(strings = {"the unit state", "the people Republic of china", "british"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
@@ -72,7 +72,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //headquarters
-    @DisplayName("Should throw exception when pass a null value to setHeadquarters")
+    @DisplayName("should throw exception when pass a null value to setHeadquarters")
     @Test
     public void shouldThrowExceptionWhenSetHeadquartersToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -80,12 +80,20 @@ class LaunchServiceProviderUnitTest {
         assertEquals("headquarters cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty value to setHeadquarters")
+    @DisplayName("should throw exception when pass an empty value to setHeadquarters")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetHeadquartersToEmpty(String headquarters) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> target.setHeadquarters(headquarters));
         assertEquals("headquarters cannot be null or empty", exception.getMessage());
+    }
+
+    @DisplayName("should return headquarters when pass a valid headquarters")
+    @ParameterizedTest
+    @ValueSource(strings = {"A's", "adage", "garb"})
+    public void shouldReturnHeadquartersWhenSetValidHeadquarters(String headquarters) {
+        target.setHeadquarters(headquarters);
+        assertEquals(headquarters, target.getHeadquarters());
     }
 }
