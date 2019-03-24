@@ -149,6 +149,4 @@ class LaunchUnitTest {
                 -> target.setLaunchOutcome(Launch.LaunchOutcome.valueOf(launchOutcome)));
         assertEquals("launch outcome cannot be set in invalid value", exception.getMessage());
     }
-
-    //TODO - Also need to check launchVehicle and launchServiceProvider
 }
