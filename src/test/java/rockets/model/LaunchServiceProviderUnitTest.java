@@ -16,7 +16,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //name
-    @DisplayName("should throw exception when no parameters is passed to name")
+    @DisplayName("should throw exception when initialize name to null")
     @Test
     public void shouldThrowWhenSetNameToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -24,7 +24,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when set name to an empty string")
+    @DisplayName("should throw exception when initialize country to an empty string")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
@@ -34,7 +34,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //yearFounded
-    @DisplayName("should throw exception when the year entered is outside of 1900 to current year")
+    @DisplayName("should throw exception when initialize yearFounded outside of 1900 to current year")
     @ParameterizedTest
     @ValueSource(ints = {1, 1899, 2020})
     public void shouldThrowWhenSetYearFoundedToNull(int yearFounded) {
@@ -44,7 +44,7 @@ class LaunchServiceProviderUnitTest {
     }
 
     //country
-    @DisplayName("should throw exception when no parameter is passed to country")
+    @DisplayName("should throw exception when initialize country name to null")
     @Test
     public void shouldThrowExceptionWhenSetCountryToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -52,7 +52,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when set country name to an empty string")
+    @DisplayName("should throw exception when initialize country name to an empty string")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
@@ -61,7 +61,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when pass an string with uncapitalized words to")
+    @DisplayName("should throw exception when initialize country with uncapitalized words with in constructor")
     @ParameterizedTest
     @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {

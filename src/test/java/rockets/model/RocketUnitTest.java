@@ -52,17 +52,17 @@ class RocketUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an uncapitalized country to create rocket object")
+    @DisplayName("Should throw exception when initialize country with uncapitalized words")
     @ParameterizedTest
     @ValueSource(strings = {"the unit state", "the people Republic of china", "british"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> new Rocket("abc", country,
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Rocket("abc", country,
                 "Tesla"));
         assertEquals("Country should be capitalized on each word", exception.getMessage());
     }
 
     //manufacturer
-    @DisplayName("Should throw exception when pass a null manufacturer to create rocket object")
+    @DisplayName("Should throw exception when initialize manufacturer into null")
     @Test
     public void shouldThrowExceptionWhenSetManufacturerToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -70,7 +70,7 @@ class RocketUnitTest {
         assertEquals("manufacturer cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty manufacturer to create rocket object")
+    @DisplayName("Should throw exception when when initialize manufacturer into empty string")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetManufacturerToEmpty(String manufacturer) {
@@ -80,7 +80,7 @@ class RocketUnitTest {
     }
 
     //massToLEO
-    @DisplayName("Should throw exception when pass a null value to setMassToLEO")
+    @DisplayName("Should throw exception when pass a null to setMassToLEO function")
     @Test
     public void shouldThrowExceptionWhenSetMassToLEOToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -88,7 +88,7 @@ class RocketUnitTest {
         assertEquals("mass to LEO cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty value to setMassToLEO")
+    @DisplayName("Should throw exception when pass an empty string to setMassToLEO function")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToLEOToEmpty(String massToLEO) {
@@ -98,7 +98,7 @@ class RocketUnitTest {
     }
 
     //massToGTO
-    @DisplayName("Should throw exception when pass a null value to setMassToGTO")
+    @DisplayName("Should throw exception when pass a null to setMassToGTO function")
     @Test
     public void shouldThrowExceptionWhenSetMassToGTOToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -106,7 +106,7 @@ class RocketUnitTest {
         assertEquals("mass to GTO cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty value to setMassToGTO")
+    @DisplayName("Should throw exception when pass an empty string to setMassToGTO function")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToGTOToEmpty(String massToGTO) {
@@ -116,7 +116,7 @@ class RocketUnitTest {
     }
 
     //massToOther
-    @DisplayName("Should throw exception when pass a null value to setMassToOther")
+    @DisplayName("Should throw exception when pass a null to setMassToOther function")
     @Test
     public void shouldThrowExceptionWhenSetMassToOtherToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, ()
@@ -124,7 +124,7 @@ class RocketUnitTest {
         assertEquals("mass to Other cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty value to setMassToOther")
+    @DisplayName("Should throw exception when pass an empty string to setMassToOther function")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToOtherToEmpty(String massToOther) {

@@ -33,7 +33,7 @@ public class Rocket extends Entity {
             this.country = country;
         }
         else {
-            throw new RuntimeException("Country should be capitalized on each word");
+            throw new IllegalArgumentException("Country should be capitalized on each word");
         }
         this.manufacturer = manufacturer;
     }
