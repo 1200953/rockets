@@ -103,14 +103,4 @@ public class Rocket extends Entity {
                 ", massToOther='" + massToOther + '\'' +
                 '}';
     }
-
-    private boolean isCountry(String country) {
-        String[] Words = country.split(" ");
-        for (String w : Words) {
-            if (!Character.isUpperCase(w.charAt(0))) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

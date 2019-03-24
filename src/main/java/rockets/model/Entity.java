@@ -21,4 +21,14 @@ public abstract class Entity {
     public void setId(Long id) {
         this.id = id;
     }
+
+    protected boolean isCountry(String country) {
+        String[] Words = country.split(" ");
+        for (String w : Words) {
+            if (!Character.isUpperCase(w.charAt(0))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

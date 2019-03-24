@@ -1,7 +1,10 @@
 package rockets.model;
 
 import com.google.common.collect.Sets;
+import static org.apache.commons.lang3.Validate.notBlank;
+import static org.apache.commons.lang3.Validate.notNull;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,10 +20,22 @@ public class LaunchServiceProvider extends Entity {
     private Set<Rocket> rockets;
 
     public LaunchServiceProvider(String name, int yearFounded, String country) {
+        notBlank(name, "name cannot be null or empty");
+        notNull(yearFounded, "year founded cannot be null");
+        notBlank(country, "country cannot be null or empty");
         this.name = name;
-        this.yearFounded = yearFounded;
-        this.country = country;
+        if (isValidYear(yearFounded)) {
+            this.yearFounded = yearFounded;
+        } else {
+            throw new RuntimeException("year founded should invalid (between 1900 to present year)");
+        }
+        if (isCountry(country)) {
+            this.country = country;
 
+        }
+        else {
+            throw new RuntimeException("Country should be capitalized on each word");
+        }
         rockets = Sets.newLinkedHashSet();
     }
 
@@ -45,6 +60,7 @@ public class LaunchServiceProvider extends Entity {
     }
 
     public void setHeadquarters(String headquarters) {
+        notBlank(headquarters, "headquarters cannot be null or empty");
         this.headquarters = headquarters;
     }
 
@@ -66,5 +82,9 @@ public class LaunchServiceProvider extends Entity {
     public int hashCode() {
 
         return Objects.hash(name, yearFounded, country);
+    }
+
+    private boolean isValidYear(int year) {
+        return 1900 <= year && year <= LocalDate.now().getYear();
     }
 }
