@@ -27,14 +27,14 @@ public class LaunchServiceProvider extends Entity {
         if (isValidYear(yearFounded)) {
             this.yearFounded = yearFounded;
         } else {
-            throw new RuntimeException("year founded should invalid (between 1900 to present year)");
+            throw new IllegalArgumentException("the year can only be set up from 1900 to current year");
         }
         if (isCountry(country)) {
             this.country = country;
 
         }
         else {
-            throw new RuntimeException("Country should be capitalized on each word");
+            throw new IllegalArgumentException("Each word in the name of country should be capitalized");
         }
         rockets = Sets.newLinkedHashSet();
     }
