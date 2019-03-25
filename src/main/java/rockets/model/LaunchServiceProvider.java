@@ -1,6 +1,8 @@
 package rockets.model;
 
 import com.google.common.collect.Sets;
+import jdk.nashorn.internal.runtime.ECMAException;
+
 import static org.apache.commons.lang3.Validate.notBlank;
 import static org.apache.commons.lang3.Validate.notNull;
 
@@ -24,10 +26,16 @@ public class LaunchServiceProvider extends Entity {
         notNull(yearFounded, "year founded cannot be null");
         notBlank(country, "country cannot be null or empty");
         this.name = name;
-        if (isValidYear(yearFounded)) {
-            this.yearFounded = yearFounded;
-        } else {
-            throw new IllegalArgumentException("the year can only be set up from 1900 to current year");
+        if (is4Digits(yearFounded)) {
+            if (isValidYear(yearFounded)) {
+                this.yearFounded = yearFounded;
+            }
+            else {
+                throw new IllegalArgumentException("year can only be set up from 1900 to current year");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("year should only be 4 digits");
         }
         if (isCountry(country)) {
             this.country = country;
@@ -86,5 +94,9 @@ public class LaunchServiceProvider extends Entity {
 
     private boolean isValidYear(int year) {
         return 1900 <= year && year <= LocalDate.now().getYear();
+    }
+
+    private boolean is4Digits(int year) {
+        return String.valueOf(year).length() == 4;
     }
 }

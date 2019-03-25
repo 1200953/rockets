@@ -47,7 +47,7 @@ class LaunchUnitTest {
 
     @DisplayName("Should return date format in YYYY-MM-DD")
     @Test
-    public void shouldReturnSpecificFormat() {
+    public void shouldReturnSpecificDateFormat() {
         target.setLaunchDate(LocalDate.of(2019, 3, 23));
         assertEquals("2019-03-23", target.getLaunchDate().toString());
     }

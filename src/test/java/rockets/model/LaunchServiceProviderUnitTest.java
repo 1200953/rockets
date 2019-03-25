@@ -36,11 +36,20 @@ class LaunchServiceProviderUnitTest {
     //yearFounded
     @DisplayName("should throw exception when initialize yearFounded outside of 1900 to current year")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(ints = {1, 1899, 2020})
+    @ValueSource(ints = {1899, 2020})
     public void shouldThrowWhenSetYearFoundedToNull(int yearFounded) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> new LaunchServiceProvider("abc", yearFounded, "US"));
-        assertEquals("the year can only be set up from 1900 to current year", exception.getMessage());
+        assertEquals("year can only be set up from 1900 to current year", exception.getMessage());
+    }
+
+    @DisplayName("should throw exception when initialize yearFounded not in 4 digits")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(ints = {1, 12345})
+    public void shouldThrowWhenSetYearFoundedNotIn4Digits(int yearFounded) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
+                -> new LaunchServiceProvider("abc", yearFounded, "US"));
+        assertEquals("year should only be 4 digits", exception.getMessage());
     }
 
     //country

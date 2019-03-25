@@ -64,7 +64,8 @@ class RocketUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Rocket("abc", country,
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
+                -> new Rocket("abc", country,
                 "Tesla"));
         assertEquals("Country should be capitalized on each word", exception.getMessage());
     }
