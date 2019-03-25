@@ -31,14 +31,14 @@ public class UserUnitTest {
         assertEquals("email cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return true when pass a valid email")
+    @DisplayName("should return true when pass a valid email to isValidEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"asjdoanf@gmail.com", "asdad@student.monash.edu"})
     public void shouldReturnTrueWhenPassAValidEmail(String email) {
         assertTrue(target.isValidEmail(email));
     }
 
-    @DisplayName("should return false when pass an invalid email")
+    @DisplayName("should return false when pass an invalid email to isValidEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"emailaddress", "emailaddress@.com.au", "email@address@gmail.com"})
     public void shouldReturnFalseWhenPassAnInvalidEmail(String email) {

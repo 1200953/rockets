@@ -124,7 +124,7 @@ class LaunchUnitTest {
         assertEquals("function cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty function to setFunction function")
+    @DisplayName("Should throw exception when pass an empty string to setFunction function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFunctionToEmpty(String function) {
@@ -149,9 +149,9 @@ class LaunchUnitTest {
         assertEquals("price cannot be null", exception.getMessage());
     }
 
-    @DisplayName("Should not be negative price")
+    @DisplayName("should return true if the price is set to be negative")
     @Test
-    public void shouldThrowExceptionWhenSetPriceToNegative() {
+    public void shouldReturnTrueWhenSetPriceToNegative() {
         BigDecimal price = new BigDecimal("-1");
         assertEquals("price cannot be negative", target.setPrice(price));
     }
