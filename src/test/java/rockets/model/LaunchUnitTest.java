@@ -60,7 +60,6 @@ class LaunchUnitTest {
         assertEquals("payload cannot be null", exception.getMessage());
     }
 
-    //TODO - Payload need to be updated instead of pass empty value
     @DisplayName("Should throw exception when pass a set with empty string to setPayload function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
@@ -176,16 +175,11 @@ class LaunchUnitTest {
         assertEquals("launch outcome cannot be null", exception.getMessage());
     }
 
-
-    //TODO - Cannot figure it out(Q1 SOLVED 24/03 ANDY)
     @DisplayName("Should return true when pass SUCCESSFUL or FAILED")
     @ParameterizedTest(name = "Enum type: {0}")
     @EnumSource(value = Launch.LaunchOutcome.class,
             names = {"SUCCESSFUL", "FAILED"})
     public void shouldReturnTrueIfEnumTypesAreCorrect(Launch.LaunchOutcome launch) {
         assertNotNull(launch);
-//        Exception exception = assertThrows(Exception.class, ()
-//                -> target.setLaunchOutcome(launch));
-//        assertEquals("launch outcome cannot be set in invalid value", exception.getMessage());
     }
 }
