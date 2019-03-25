@@ -15,14 +15,6 @@ class LaunchServiceProviderUnitTest {
         target = new LaunchServiceProvider("abc", 2019, "US");
     }
 
-    /*
-    To-Do
-    Positive Test
-    @DisplayName("should throw exception when initialize name to null")
-    @Test
-
-    */
-
     //name
     @DisplayName("should throw exception when initialize name to null")
     @Test

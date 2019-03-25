@@ -15,6 +15,14 @@ public class UserUnitTest {
         target = new User();
     }
 
+    //id
+    @DisplayName("Should throw exception when pass a null value to setId function")
+    @Test
+    public void shouldThrowExceptionWhenSetIdToNull() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setId(null));
+        assertEquals("id cannot be null", exception.getMessage());
+    }
+
     //email
     @DisplayName("should throw exception when pass a empty email address to setEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")

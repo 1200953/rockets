@@ -1,5 +1,7 @@
 package rockets.model;
 
+import static org.apache.commons.lang3.Validate.notNull;
+
 public abstract class Entity {
     private Long id;
 
@@ -19,6 +21,7 @@ public abstract class Entity {
     }
 
     public void setId(Long id) {
+        notNull(id, "id cannot be null");
         this.id = id;
     }
 

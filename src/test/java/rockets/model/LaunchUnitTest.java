@@ -1,22 +1,18 @@
 package rockets.model;
 
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LaunchUnitTest {
     private Launch target;
@@ -24,6 +20,14 @@ class LaunchUnitTest {
     @BeforeEach
     public void setUp() {
         target = new Launch();
+    }
+
+    //id
+    @DisplayName("Should throw exception when pass a null value to setId function")
+    @Test
+    public void shouldThrowExceptionWhenSetIdToNull() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setId(null));
+        assertEquals("id cannot be null", exception.getMessage());
     }
 
     //Launch Date

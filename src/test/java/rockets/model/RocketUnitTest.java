@@ -16,6 +16,14 @@ class RocketUnitTest {
         target = new Rocket("abc","US", "Tesla");
     }
 
+    //id
+    @DisplayName("Should throw exception when pass a null value to setId function")
+    @Test
+    public void shouldThrowExceptionWhenSetIdToNull() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setId(null));
+        assertEquals("id cannot be null", exception.getMessage());
+    }
+
     //Name
     @DisplayName("Should throw exception when initialize name into null")
     @Test
