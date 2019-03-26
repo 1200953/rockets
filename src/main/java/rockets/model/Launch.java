@@ -2,10 +2,11 @@ package rockets.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
-import static org.apache.commons.lang3.Validate.*;
+
+import static org.apache.commons.lang3.Validate.notBlank;
+import static org.apache.commons.lang3.Validate.notNull;
 
 public class Launch extends Entity {
     public enum LaunchOutcome {
@@ -18,7 +19,7 @@ public class Launch extends Entity {
 
     private LaunchServiceProvider launchServiceProvider;
 
-    private Set<String> payload;
+    private Set<Payload> payload;
 
     private String launchSite;
 
@@ -29,6 +30,14 @@ public class Launch extends Entity {
     private BigDecimal price;
 
     private LaunchOutcome launchOutcome;
+
+    public Set<Payload> getPayload() {
+        return payload;
+    }
+
+    public void setPayload(Set<Payload> payload) {
+        this.payload = payload;
+    }
 
     public LocalDate getLaunchDate() {
         return launchDate;
@@ -61,20 +70,20 @@ public class Launch extends Entity {
         this.launchServiceProvider = launchServiceProvider;
     }
 
-    public Set<String> getPayload() {
-        return payload;
-    }
-
-    public void setPayload(Set<String> payload) {
-        notNull(payload, "payload cannot be null");
-        for (String s : payload) {
-            if (s.trim().equals(""))
-                throw new IllegalArgumentException("payload cannot be null or empty");
-            else
-                this.payload = payload;
-        }
-
-    }
+//    public Set<String> getPayload() {
+//        return payload;
+//    }
+//
+//    public void setPayload(Set<String> payload) {
+//        notNull(payload, "payload cannot be null");
+//        for (String s : payload) {
+//            if (s.trim().equals(""))
+//                throw new IllegalArgumentException("payload cannot be null or empty");
+//            else
+//                this.payload = payload;
+//        }
+//
+//    }
 
     public String getLaunchSite() {
         return launchSite;

@@ -16,6 +16,16 @@ public class Rocket extends Entity {
 
     private String massToOther;
 
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    private String family;
+
     /**
      * All parameters shouldn't be null.
      *
@@ -102,5 +112,9 @@ public class Rocket extends Entity {
                 ", massToGTO='" + massToGTO + '\'' +
                 ", massToOther='" + massToOther + '\'' +
                 '}';
+    }
+
+    private boolean containFamily (String name) {
+        return name.contains(family);
     }
 }
