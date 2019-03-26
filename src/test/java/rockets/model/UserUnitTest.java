@@ -15,20 +15,13 @@ public class UserUnitTest {
         target = new User();
     }
 
-    //id
-    @DisplayName("Should throw exception when pass a null value to setId function")
-    @Test
-    public void shouldThrowExceptionWhenSetIdToNull() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setId(null));
-        assertEquals("id cannot be null", exception.getMessage());
-    }
-
     //email
     @DisplayName("should throw exception when pass a empty email address to setEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetEmailToEmpty(String email) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setEmail(email));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setEmail(email));
         assertEquals("email cannot be null or empty", exception.getMessage());
     }
 
@@ -48,7 +41,7 @@ public class UserUnitTest {
 
     @DisplayName("should return false when pass an invalid email to isValidEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"emailaddress", "emailaddress@.com.au", "email@address@gmail.com"})
+    @ValueSource(strings = {"emailAddress", "emailSddress@.com.au", "email@address@gmail.com"})
     public void shouldReturnFalseWhenPassAnInvalidEmail(String email) {
         assertFalse(target.isValidEmail(email));
     }
@@ -60,7 +53,7 @@ public class UserUnitTest {
         target.setEmail(email);
         User anotherUser = new User();
         anotherUser.setEmail(email);
-        assertTrue(target.equals(anotherUser));
+        assertEquals(target, anotherUser);
     }
 
     @DisplayName("should return false when two users have different emails")
@@ -69,7 +62,7 @@ public class UserUnitTest {
         target.setEmail("abc@example.com");
         User anotherUser = new User();
         anotherUser.setEmail("def@example.com");
-        assertFalse(target.equals(anotherUser));
+        assertNotEquals(target, anotherUser);
     }
 
     //password
@@ -85,8 +78,8 @@ public class UserUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetPasswordToEmpty(String email) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
-                -> target.setPassword(email));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setPassword(email));
         assertEquals("password cannot be null or empty", exception.getMessage());
     }
 
@@ -109,8 +102,8 @@ public class UserUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFirstNameToEmpty(String firstName) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
-                -> target.setFirstName(firstName));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setFirstName(firstName));
         assertEquals("first name cannot be null or empty", exception.getMessage());
     }
 
@@ -126,8 +119,8 @@ public class UserUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetLastNameToEmpty(String lastName) {
-        NullPointerException exception = assertThrows(NullPointerException.class, ()
-                -> target.setLastName(lastName));
+        NullPointerException exception = assertThrows(NullPointerException.class,
+                () -> target.setLastName(lastName));
         assertEquals("last name cannot be null or empty", exception.getMessage());
     }
 

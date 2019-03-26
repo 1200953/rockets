@@ -19,7 +19,7 @@ public class Launch extends Entity {
 
     private LaunchServiceProvider launchServiceProvider;
 
-    private Set<Payload> payload;
+    private Set<Payload> payloads;
 
     private String launchSite;
 
@@ -31,12 +31,12 @@ public class Launch extends Entity {
 
     private LaunchOutcome launchOutcome;
 
-    public Set<Payload> getPayload() {
-        return payload;
+    public Set<Payload> getPayloads() {
+        return payloads;
     }
 
     public void setPayload(Set<Payload> payload) {
-        this.payload = payload;
+        this.payloads = payload;
     }
 
     public LocalDate getLaunchDate() {

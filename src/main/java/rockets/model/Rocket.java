@@ -6,6 +6,8 @@ import static org.apache.commons.lang3.Validate.notBlank;
 public class Rocket extends Entity {
     private String name;
 
+    private String family;
+
     private String country;
 
     private String manufacturer;
@@ -16,36 +18,37 @@ public class Rocket extends Entity {
 
     private String massToOther;
 
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    private String family;
-
     /**
      * All parameters shouldn't be null.
      *
      * @param name
+     * @param family
      * @param country
      * @param manufacturer
      */
-    public Rocket(String name, String country, String manufacturer) {
+    public Rocket(String name,String family, String country, String manufacturer) {
         notBlank(name, "name cannot be null or empty");
+        notBlank(family, "family cannot be null or empty");
         notBlank(country, "country cannot be null or empty");
         notBlank(manufacturer, "manufacturer cannot be null or empty");
-
-        this.name = name;
+        this.family = family;
+        if (containsFamily(name)) {
+            this.name = name;
+        }
+        else {
+            throw new IllegalArgumentException("name should contains family");
+        }
         if (isCountry(country)) {
             this.country = country;
         }
         else {
-            throw new IllegalArgumentException("Country should be capitalized on each word");
+            throw new IllegalArgumentException("country should be capitalized on each word");
         }
         this.manufacturer = manufacturer;
+    }
+
+    public String getFamily() {
+        return family;
     }
 
     public String getName() {
@@ -73,18 +76,30 @@ public class Rocket extends Entity {
     }
 
     public void setMassToLEO(String massToLEO) {
-        notBlank(massToLEO, "mass to LEO cannot be null or empty");
-        this.massToLEO = massToLEO;
+        if (massToLEO == null)
+            this.massToLEO = null;
+        else if (massToLEO.trim().isEmpty())
+            throw new IllegalArgumentException("massToLEO cannot be empty");
+        else
+            this.massToLEO = massToLEO;
     }
 
     public void setMassToGTO(String massToGTO) {
-        notBlank(massToGTO, "mass to GTO cannot be null or empty");
-        this.massToGTO = massToGTO;
+        if (massToGTO == null)
+            this.massToGTO = null;
+        else if (massToGTO.trim().isEmpty())
+            throw new IllegalArgumentException("massToGTO cannot be empty");
+        else
+            this.massToGTO = massToGTO;
     }
 
     public void setMassToOther(String massToOther) {
-        notBlank(massToOther, "mass to Other cannot be null or empty");
-        this.massToOther = massToOther;
+        if (massToOther == null)
+            this.massToOther = null;
+        else if (massToOther.trim().isEmpty())
+            throw new IllegalArgumentException("massToOther cannot be empty");
+        else
+            this.massToOther = massToOther;
     }
 
     @Override
@@ -114,7 +129,7 @@ public class Rocket extends Entity {
                 '}';
     }
 
-    private boolean containFamily (String name) {
+    private boolean containsFamily (String name) {
         return name.contains(family);
     }
 }

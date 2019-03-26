@@ -9,8 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,7 +64,8 @@ class LaunchUnitTest {
 //    public void shouldThrowExceptionWhenSetPayloadToEmpty(Payload payroll) {
 //        Set<Payload> set = new HashSet<>();
 //        set.add(payroll);
-//        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setPayload(set));
+//        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+//        () -> target.setPayload(set));
 //        assertEquals("payload cannot be null or empty", exception.getMessage());
 //    }
 
@@ -107,7 +106,8 @@ class LaunchUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetOrbitToEmpty(String orbit) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> target.setOrbit(orbit));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setOrbit(orbit));
         assertEquals("orbit cannot be null or empty", exception.getMessage());
     }
 
@@ -171,7 +171,8 @@ class LaunchUnitTest {
     @DisplayName("Should throw exception when pass a null launch outcome to setLaunchOutcome function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchOutcomeToNull() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setLaunchOutcome(null));
+        NullPointerException exception = assertThrows(NullPointerException.class,
+                () -> target.setLaunchOutcome(null));
         assertEquals("launch outcome cannot be null", exception.getMessage());
     }
 
