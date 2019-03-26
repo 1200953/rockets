@@ -152,16 +152,17 @@ class LaunchUnitTest {
         assertEquals("price cannot be null", exception.getMessage());
     }
 
-    @DisplayName("should return true if the price is set to be negative")
-    @Test
-    public void shouldReturnTrueWhenSetPriceToNegative() {
-        BigDecimal price = new BigDecimal("-1");
-        assertEquals("price cannot be negative", target.setPrice(price));
+    @DisplayName("should return true if the price is set to be negative or 0")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"-1000","-1","0"})
+    public void shouldReturnTrueWhenSetPriceToNegative(String price_t) {
+        BigDecimal price = new BigDecimal(price_t);
+        assertEquals("price cannot be negative or 0", target.setPrice(price));
     }
 
     @DisplayName("should return true when pass a valid price to setPrice function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"2489352789275983785279", "327598723985723957", "237498327493"})
+    @ValueSource(strings = {"1", "8888888", "8888888888888888"})
     public void shouldReturnPriceWhenSetValidPrice(String price) {
         target.setPrice(new BigDecimal(price));
         assertEquals(new BigDecimal(price), target.getPrice());

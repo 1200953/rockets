@@ -122,7 +122,7 @@ public class Launch extends Entity {
             this.price = price;
             return null;
         }
-        return "price cannot be negative";
+        return "price cannot be negative or 0";
     }
 
     public LaunchOutcome getLaunchOutcome() {
