@@ -1,14 +1,12 @@
 package rockets.model;
 
 import com.google.common.collect.Sets;
-import jdk.nashorn.internal.runtime.ECMAException;
-
-import static org.apache.commons.lang3.Validate.notBlank;
-import static org.apache.commons.lang3.Validate.notNull;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
+
+import static org.apache.commons.lang3.Validate.notBlank;
 
 public class LaunchServiceProvider extends Entity {
     private String name;
@@ -23,7 +21,6 @@ public class LaunchServiceProvider extends Entity {
 
     public LaunchServiceProvider(String name, int yearFounded, String country) {
         notBlank(name, "name cannot be null or empty");
-        notNull(yearFounded, "year founded cannot be null");
         notBlank(country, "country cannot be null or empty");
         this.name = name;
         if (is4Digits(yearFounded)) {

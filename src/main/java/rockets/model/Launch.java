@@ -5,9 +5,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
-
-import static org.apache.commons.lang3.Validate.notBlank;
-import static org.apache.commons.lang3.Validate.notNull;
+import static org.apache.commons.lang3.Validate.*;
 
 public class Launch extends Entity {
     public enum LaunchOutcome {
@@ -69,10 +67,8 @@ public class Launch extends Entity {
 
     public void setPayload(Set<String> payload) {
         notNull(payload, "payload cannot be null");
-        Iterator value = payload.iterator();
-        while(value.hasNext())
-        {
-            if(value.next().toString().trim().equals(""))
+        for (String s : payload) {
+            if (s.trim().equals(""))
                 throw new IllegalArgumentException("payload cannot be null or empty");
             else
                 this.payload = payload;

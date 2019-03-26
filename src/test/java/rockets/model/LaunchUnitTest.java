@@ -161,10 +161,10 @@ class LaunchUnitTest {
 
     @DisplayName("should return price when pass a valid price")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(longs = {15325336, 375975982, 459348538})
-    public void shouldReturnPriceWhenSetValidPrice(long price) {
-        target.setPrice(BigDecimal.valueOf(price));
-        assertEquals(BigDecimal.valueOf(price), target.getPrice());
+    @ValueSource(strings = {"2489352789275983785279", "327598723985723957", "237498327493"})
+    public void shouldReturnPriceWhenSetValidPrice(String price) {
+        target.setPrice(new BigDecimal(price));
+        assertEquals(new BigDecimal(price), target.getPrice());
     }
 
     //Launch Outcome
