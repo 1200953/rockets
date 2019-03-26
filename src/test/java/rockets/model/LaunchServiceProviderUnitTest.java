@@ -43,7 +43,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("year can only be set up from 1900 to current year", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when initialize yearFounded not in 4 digits")
+    @DisplayName("should throw exception when initialize yearFounded other than 4 digits")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(ints = {1, 12345})
     public void shouldThrowWhenSetYearFoundedNotIn4Digits(int yearFounded) {
@@ -70,7 +70,7 @@ class LaunchServiceProviderUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when initialize country with uncapitalized words with in constructor")
+    @DisplayName("should throw exception when initialize country with uncapitalized words")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {

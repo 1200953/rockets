@@ -43,7 +43,7 @@ class LaunchUnitTest {
                 target.setLaunchDate(LocalDate.of(1899,12,31)));
     }
 
-    @DisplayName("Should return date format in YYYY-MM-DD")
+    @DisplayName("Should return true when pass the date in correct format YYYY-MM-DD")
     @Test
     public void shouldReturnSpecificDateFormat() {
         target.setLaunchDate(LocalDate.of(2019, 3, 23));
@@ -86,7 +86,7 @@ class LaunchUnitTest {
         assertEquals("launch site cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return launch site when pass a valid launch site")
+    @DisplayName("should return true when pass a valid launch site to setLaunchSite function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnLaunchSiteWhenSetValidLaunchSite(String launchSite) {
@@ -111,7 +111,7 @@ class LaunchUnitTest {
         assertEquals("orbit cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return orbit when pass a valid orbit")
+    @DisplayName("should return true when pass a valid orbit to setOrbit function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnOrbitWhenSetValidOrbit(String orbit) {
@@ -136,7 +136,7 @@ class LaunchUnitTest {
         assertEquals("function cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return function when pass a valid function")
+    @DisplayName("should return true when pass a valid string to setFunction function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"A's", "adage", "garb"})
     public void shouldReturnFunctionWhenSetValidFunction(String function) {
@@ -159,7 +159,7 @@ class LaunchUnitTest {
         assertEquals("price cannot be negative", target.setPrice(price));
     }
 
-    @DisplayName("should return price when pass a valid price")
+    @DisplayName("should return true when pass a valid price to setPrice function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"2489352789275983785279", "327598723985723957", "237498327493"})
     public void shouldReturnPriceWhenSetValidPrice(String price) {

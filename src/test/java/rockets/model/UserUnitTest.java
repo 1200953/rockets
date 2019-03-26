@@ -65,7 +65,7 @@ public class UserUnitTest {
         assertNotEquals(target, anotherUser);
     }
 
-    @DisplayName("should return email when set valid email")
+    @DisplayName("should return true when pass a valid email to setEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"abcdef@gmail.com", "adanca@student.monash.edu"})
     public void shouldReturnEmailWhenSetValid(String email) {
@@ -130,7 +130,7 @@ public class UserUnitTest {
         assertEquals("first name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return first name when set valid value")
+    @DisplayName("should return true when pass a valid name to setFirstName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Vincent", "Andy"})
     public void shouldReturnFirstNameWhenSetValidValue(String firstName) {
@@ -155,7 +155,7 @@ public class UserUnitTest {
         assertEquals("last name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return last name when set valid value")
+    @DisplayName("should return true when pass a valid last name to setLastName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Du", "Xie"})
     public void shouldReturnLastNameWhenSetValidValue(String lastName) {

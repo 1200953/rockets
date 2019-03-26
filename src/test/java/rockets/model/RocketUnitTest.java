@@ -43,7 +43,7 @@ class RocketUnitTest {
         assertEquals("name should contains family", exception.getMessage());
     }
 
-    @DisplayName("Should pass when initialize name with valid value")
+    @DisplayName("Should return true when initialize name with a valid name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Dragon A", "Dragon B", "Dragon C"})
     public void shouldPassWhenSetValidName(String name) {
@@ -69,7 +69,7 @@ class RocketUnitTest {
         assertEquals("family cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should pass when initialize family with valid value")
+    @DisplayName("Should return true when initialize family with a valid family name")
     @Test
     public void shouldPassWhenSetValidFamily() {
         String family = "Dragon";
@@ -104,7 +104,7 @@ class RocketUnitTest {
         assertEquals("country should be capitalized on each word", exception.getMessage());
     }
 
-    @DisplayName("Should pass when initialize country with valid value")
+    @DisplayName("Should return true when initialize country with a valid country name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"South Korea", "Czech Republic", "Canada"})
     public void shouldPassWhenSetValidCountry(String country) {
@@ -130,7 +130,7 @@ class RocketUnitTest {
         assertEquals("manufacturer cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should pass when initialize manufacturer with valid value")
+    @DisplayName("Should return true when initialize manufacturer with a valid manufacturer name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Tesla", "NASA", "Virgin"})
     public void shouldPassWhenSetValidManufacturer(String manufacturer) {
@@ -148,7 +148,7 @@ class RocketUnitTest {
         assertEquals("massToLEO cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should pass when set a valid massToLEO")
+    @DisplayName("Should return true when pass a valid massToLEO to setMassToLEO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"8.0 t", "9.0 t", "10.0 t"})
     public void shouldPassWhenSetValidMassToLEO(String massToLEO) {
@@ -166,7 +166,7 @@ class RocketUnitTest {
         assertEquals("massToGTO cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should pass when set a valid massToGTO")
+    @DisplayName("Should return true when pass a valid massToGTO to setMassToGTO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"4.0 t", "5.0 t", "6.0 t"})
     public void shouldPassWhenSetValidMassToGTO(String massToGTO) {
@@ -184,7 +184,7 @@ class RocketUnitTest {
         assertEquals("massToOther cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should pass when set a valid massToOther")
+    @DisplayName("Should return true when pass a valid massToOther to setMassToOther function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"1.0 t", "2.0 t", "3.0 t"})
     public void shouldPassWhenSetValidMassToOther(String massToOther) {
