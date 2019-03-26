@@ -65,6 +65,14 @@ public class UserUnitTest {
         assertNotEquals(target, anotherUser);
     }
 
+    @DisplayName("should return email when set valid email")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"abcdef@gmail.com", "adanca@student.monash.edu"})
+    public void shouldReturnEmailWhenSetValid(String email) {
+        target.setEmail(email);
+        assertEquals(email, target.getEmail());
+    }
+
     //password
     @DisplayName("should throw exceptions when pass a null password to setPassword function")
     @Test
@@ -97,6 +105,14 @@ public class UserUnitTest {
         assertFalse(target.isValidPassword(password));
     }
 
+    @DisplayName("should return password when set valid value")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"Abcdef#1ad", "nconoaACAS413%!and"})
+    public void shouldReturnPasswordWhenSetValidValue(String password) {
+        target.setPassword(password);
+        assertEquals(password, target.getPassword());
+    }
+
     //firstName
     @DisplayName("should throw exception when pass a empty value to setFirstName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
@@ -114,6 +130,14 @@ public class UserUnitTest {
         assertEquals("first name cannot be null or empty", exception.getMessage());
     }
 
+    @DisplayName("should return first name when set valid value")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"Vincent", "Andy"})
+    public void shouldReturnFirstNameWhenSetValidValue(String firstName) {
+        target.setFirstName(firstName);
+        assertEquals(firstName, target.getFirstName());
+    }
+
     //lastName
     @DisplayName("should throw exception when pass a empty value to setLastName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
@@ -129,5 +153,13 @@ public class UserUnitTest {
     public void shouldThrowExceptionWhenSetLastNameToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setLastName(null));
         assertEquals("last name cannot be null or empty", exception.getMessage());
+    }
+
+    @DisplayName("should return last name when set valid value")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"Du", "Xie"})
+    public void shouldReturnLastNameWhenSetValidValue(String firstName) {
+        target.setFirstName(firstName);
+        assertEquals(firstName, target.getFirstName());
     }
 }
