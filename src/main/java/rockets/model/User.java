@@ -27,7 +27,7 @@ public class User extends Entity {
     }
 
     public void setLastName(String lastName) {
-        notBlank(firstName, "last name cannot be null or empty");
+        notBlank(lastName, "last name cannot be null or empty");
         this.lastName = lastName;
     }
 
