@@ -41,7 +41,7 @@ public class UserUnitTest {
 
     @DisplayName("should return false when pass an invalid email to isValidEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"emailAddress", "emailSddress@.com.au", "email@address@gmail.com"})
+    @ValueSource(strings = {"emailAddress", "emailAddress@.com.au", "email@address@gmail.com"})
     public void shouldReturnFalseWhenPassAnInvalidEmail(String email) {
         assertFalse(target.isValidEmail(email));
     }
@@ -107,7 +107,7 @@ public class UserUnitTest {
 
     @DisplayName("should return password when set valid value")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Abcdef#1ad", "nconoaACAS413%!and"})
+    @ValueSource(strings = {"Abdel#1ad", "nonaACAS413%!and"})
     public void shouldReturnPasswordWhenSetValidValue(String password) {
         target.setPassword(password);
         assertEquals(password, target.getPassword());
@@ -158,8 +158,8 @@ public class UserUnitTest {
     @DisplayName("should return last name when set valid value")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Du", "Xie"})
-    public void shouldReturnLastNameWhenSetValidValue(String firstName) {
-        target.setFirstName(firstName);
-        assertEquals(firstName, target.getFirstName());
+    public void shouldReturnLastNameWhenSetValidValue(String lastName) {
+        target.setLastName(lastName);
+        assertEquals(lastName, target.getLastName());
     }
 }
