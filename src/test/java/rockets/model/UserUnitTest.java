@@ -143,7 +143,7 @@ public class UserUnitTest {
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetLastNameToEmpty(String lastName) {
-        NullPointerException exception = assertThrows(NullPointerException.class,
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setLastName(lastName));
         assertEquals("last name cannot be null or empty", exception.getMessage());
     }
