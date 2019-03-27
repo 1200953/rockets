@@ -21,7 +21,7 @@ class LaunchUnitTest {
     }
 
     //id
-    @DisplayName("Should throw exception when pass a null value to setId function")
+    @DisplayName("should throw exception when pass a null value to setId function")
     @Test
     public void shouldThrowExceptionWhenSetIdToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setId(null));
@@ -29,21 +29,21 @@ class LaunchUnitTest {
     }
 
     //Launch Date
-    @DisplayName("Should throw exception when pass a null launch date to setLaunchDate function")
+    @DisplayName("should throw exception when pass a null launch date to setLaunchDate function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchDateToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setLaunchDate(null));
         assertEquals("launch date cannot be null", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when set a launch date before 1900-01-01")
+    @DisplayName("should throw exception when set a launch date before 1900-01-01")
     @Test
     public void shouldNotBefore19000101() {
         assertEquals("launch date should pass 1900-01-01",
                 target.setLaunchDate(LocalDate.of(1899,12,31)));
     }
 
-    @DisplayName("Should return true when pass the date in correct format YYYY-MM-DD")
+    @DisplayName("should return true when pass the date in correct format YYYY-MM-DD")
     @Test
     public void shouldReturnSpecificDateFormat() {
         target.setLaunchDate(LocalDate.of(2019, 3, 23));
@@ -51,14 +51,14 @@ class LaunchUnitTest {
     }
 
     //Payload
-//    @DisplayName("Should throw exception when pass a null to setPayload function")
+//    @DisplayName("should throw exception when pass a null to setPayload function")
 //    @Test
 //    public void shouldThrowExceptionWhenSetPayloadToNull() {
 //        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setPayload(null));
 //        assertEquals("payload cannot be null", exception.getMessage());
 //    }
 //
-//    @DisplayName("Should throw exception when pass a set with empty string to setPayload function")
+//    @DisplayName("should throw exception when pass a set with empty string to setPayload function")
 //    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
 //    @ValueSource(strings = {"", " ", "  "})
 //    public void shouldThrowExceptionWhenSetPayloadToEmpty(Payload payroll) {
@@ -70,14 +70,14 @@ class LaunchUnitTest {
 //    }
 
     //Launch Site
-    @DisplayName("Should throw exception when pass a null launch site to setLaunchSite function")
+    @DisplayName("should throw exception when pass a null launch site to setLaunchSite function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchSiteToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setLaunchSite(null));
         assertEquals("launch site cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty launch site to setLaunchSite function")
+    @DisplayName("should throw exception when pass an empty launch site to setLaunchSite function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetLaunchSiteToEmpty(String launchSite) {
@@ -95,14 +95,14 @@ class LaunchUnitTest {
     }
 
     //Orbit
-    @DisplayName("Should throw exception when pass a null orbit to setOrbit function")
+    @DisplayName("should throw exception when pass a null orbit to setOrbit function")
     @Test
     public void shouldThrowExceptionWhenSetOrbitToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setOrbit(null));
         assertEquals("orbit cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty orbit to setOrbit function")
+    @DisplayName("should throw exception when pass an empty orbit to setOrbit function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetOrbitToEmpty(String orbit) {
@@ -120,14 +120,14 @@ class LaunchUnitTest {
     }
 
     //Function
-    @DisplayName("Should throw exception when pass a null function to setFunction function")
+    @DisplayName("should throw exception when pass a null function to setFunction function")
     @Test
     public void shouldThrowExceptionWhenSetFunctionToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setFunction(null));
         assertEquals("function cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when pass an empty string to setFunction function")
+    @DisplayName("should throw exception when pass an empty string to setFunction function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFunctionToEmpty(String function) {
@@ -145,7 +145,7 @@ class LaunchUnitTest {
     }
 
     //Price
-    @DisplayName("Should throw exception when pass a null price to setPrice function")
+    @DisplayName("should throw exception when pass a null price to setPrice function")
     @Test
     public void shouldThrowExceptionWhenSetPriceToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setPrice(null));
@@ -169,7 +169,7 @@ class LaunchUnitTest {
     }
 
     //Launch Outcome
-    @DisplayName("Should throw exception when pass a null launch outcome to setLaunchOutcome function")
+    @DisplayName("should throw exception when pass a null launch outcome to setLaunchOutcome function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchOutcomeToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class,
@@ -177,7 +177,7 @@ class LaunchUnitTest {
         assertEquals("launch outcome cannot be null", exception.getMessage());
     }
 
-    @DisplayName("Should return true when pass SUCCESSFUL or FAILED")
+    @DisplayName("should return true when pass SUCCESSFUL or FAILED")
     @ParameterizedTest(name = "Enum type: {0}")
     @EnumSource(value = Launch.LaunchOutcome.class,
             names = {"SUCCESSFUL", "FAILED"})

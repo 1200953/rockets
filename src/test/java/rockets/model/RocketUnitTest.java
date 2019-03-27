@@ -17,7 +17,7 @@ class RocketUnitTest {
     }
 
     //Name
-    @DisplayName("Should throw exception when initialize name into null")
+    @DisplayName("should throw exception when initialize name into null")
     @Test
     public void shouldThrowWhenSetNameToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class,
@@ -25,7 +25,7 @@ class RocketUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when initialize name into an empty string")
+    @DisplayName("should throw exception when initialize name into an empty string")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetNameToEmpty(String name) {
@@ -34,7 +34,7 @@ class RocketUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when initialize name not contains family")
+    @DisplayName("should throw exception when initialize name not contains family")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Snack A", "Drag A", "A"})
     public void shouldThrowExceptionWhenSetNameNotContainsFamily(String name) {
@@ -43,7 +43,7 @@ class RocketUnitTest {
         assertEquals("name should contains family", exception.getMessage());
     }
 
-    @DisplayName("Should return true when initialize name with a valid name")
+    @DisplayName("should return true when initialize name with a valid name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Dragon A", "Dragon B", "Dragon C"})
     public void shouldPassWhenSetValidName(String name) {
@@ -52,7 +52,7 @@ class RocketUnitTest {
     }
 
     //Family
-    @DisplayName("Should throw exception when initialize family into null")
+    @DisplayName("should throw exception when initialize family into null")
     @Test
     public void shouldThrowWhenSetFamilyToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class,
@@ -60,7 +60,7 @@ class RocketUnitTest {
         assertEquals("family cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when initialize family into an empty string")
+    @DisplayName("should throw exception when initialize family into an empty string")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetFamilyToEmpty(String family) {
@@ -69,7 +69,7 @@ class RocketUnitTest {
         assertEquals("family cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should return true when initialize family with a valid family name")
+    @DisplayName("should return true when initialize family with a valid family name")
     @Test
     public void shouldPassWhenSetValidFamily() {
         String family = "Dragon";
@@ -78,7 +78,7 @@ class RocketUnitTest {
     }
 
     //Country
-    @DisplayName("Should throw exception when initialize country into null")
+    @DisplayName("should throw exception when initialize country into null")
     @Test
     public void shouldThrowExceptionWhenSetCountryToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class,
@@ -86,7 +86,7 @@ class RocketUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when initialize country into an empty string")
+    @DisplayName("should throw exception when initialize country into an empty string")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetCountryToEmpty(String country) {
@@ -95,7 +95,7 @@ class RocketUnitTest {
         assertEquals("country cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when initialize country with uncapitalized words")
+    @DisplayName("should throw exception when initialize country with uncapitalized words")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"south korea", "Czech republic", "canada"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
@@ -104,7 +104,7 @@ class RocketUnitTest {
         assertEquals("country should be capitalized on each word", exception.getMessage());
     }
 
-    @DisplayName("Should return true when initialize country with a valid country name")
+    @DisplayName("should return true when initialize country with a valid country name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"South Korea", "Czech Republic", "Canada"})
     public void shouldPassWhenSetValidCountry(String country) {
@@ -113,7 +113,7 @@ class RocketUnitTest {
     }
 
     //manufacturer
-    @DisplayName("Should throw exception when initialize manufacturer into null")
+    @DisplayName("should throw exception when initialize manufacturer into null")
     @Test
     public void shouldThrowExceptionWhenSetManufacturerToNull() {
         NullPointerException exception = assertThrows(NullPointerException.class,
@@ -121,7 +121,7 @@ class RocketUnitTest {
         assertEquals("manufacturer cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should throw exception when when initialize manufacturer into empty string")
+    @DisplayName("should throw exception when when initialize manufacturer into empty string")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetManufacturerToEmpty(String manufacturer) {
@@ -130,7 +130,7 @@ class RocketUnitTest {
         assertEquals("manufacturer cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("Should return true when initialize manufacturer with a valid manufacturer name")
+    @DisplayName("should return true when initialize manufacturer with a valid manufacturer name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Tesla", "NASA", "Virgin"})
     public void shouldPassWhenSetValidManufacturer(String manufacturer) {
@@ -139,7 +139,7 @@ class RocketUnitTest {
     }
 
     //massToLEO
-    @DisplayName("Should throw exception when pass an empty string to setMassToLEO function")
+    @DisplayName("should throw exception when pass an empty string to setMassToLEO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToLEOToEmpty(String massToLEO) {
@@ -148,7 +148,7 @@ class RocketUnitTest {
         assertEquals("massToLEO cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should return true when pass a valid massToLEO to setMassToLEO function")
+    @DisplayName("should return true when pass a valid massToLEO to setMassToLEO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"8.0 t", "9.0 t", "10.0 t"})
     public void shouldPassWhenSetValidMassToLEO(String massToLEO) {
@@ -157,7 +157,7 @@ class RocketUnitTest {
     }
 
     //massToGTO
-    @DisplayName("Should throw exception when pass an empty string to setMassToGTO function")
+    @DisplayName("should throw exception when pass an empty string to setMassToGTO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToGTOToEmpty(String massToGTO) {
@@ -166,7 +166,7 @@ class RocketUnitTest {
         assertEquals("massToGTO cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should return true when pass a valid massToGTO to setMassToGTO function")
+    @DisplayName("should return true when pass a valid massToGTO to setMassToGTO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"4.0 t", "5.0 t", "6.0 t"})
     public void shouldPassWhenSetValidMassToGTO(String massToGTO) {
@@ -175,7 +175,7 @@ class RocketUnitTest {
     }
 
     //massToOther
-    @DisplayName("Should throw exception when pass an empty string to setMassToOther function")
+    @DisplayName("should throw exception when pass an empty string to setMassToOther function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
     public void shouldThrowExceptionWhenSetMassToOtherToEmpty(String massToOther) {
@@ -184,7 +184,7 @@ class RocketUnitTest {
         assertEquals("massToOther cannot be empty", exception.getMessage());
     }
 
-    @DisplayName("Should return true when pass a valid massToOther to setMassToOther function")
+    @DisplayName("should return true when pass a valid massToOther to setMassToOther function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"1.0 t", "2.0 t", "3.0 t"})
     public void shouldPassWhenSetValidMassToOther(String massToOther) {

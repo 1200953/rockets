@@ -1,6 +1,7 @@
 package rockets.model;
 
 import java.util.Objects;
+import static org.apache.commons.lang3.Validate.notBlank;
 
 public class Payload extends Entity {
     private String name;
@@ -10,12 +11,12 @@ public class Payload extends Entity {
     private String function;
     private String mass;
 
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+        notBlank(name, "name cannot be null or empty");
         this.name = name;
     }
 
@@ -24,6 +25,7 @@ public class Payload extends Entity {
     }
 
     public void setCategory(String category) {
+        notBlank(category, "category cannot be null or empty");
         this.category = category;
     }
 
@@ -32,7 +34,11 @@ public class Payload extends Entity {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        notBlank(country, "country cannot be null or empty");
+        if (isCountry(country))
+            this.country = country;
+        else
+            throw new IllegalArgumentException("country should be capitalized on each word");
     }
 
     public String getManufacturer() {
@@ -40,6 +46,7 @@ public class Payload extends Entity {
     }
 
     public void setManufacturer(String manufacturer) {
+        notBlank(manufacturer, "manufacturer cannot be null or empty");
         this.manufacturer = manufacturer;
     }
 
@@ -48,6 +55,7 @@ public class Payload extends Entity {
     }
 
     public void setFunction(String function) {
+        notBlank(function, "function cannot be null or empty");
         this.function = function;
     }
 
@@ -56,6 +64,7 @@ public class Payload extends Entity {
     }
 
     public void setMass(String mass) {
+        notBlank(mass, "mass cannot be null or empty");
         this.mass = mass;
     }
 
