@@ -2,8 +2,8 @@ package rockets.model;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
+
 import static org.apache.commons.lang3.Validate.notBlank;
-import static org.apache.commons.lang3.Validate.notNull;
 
 public class User extends Entity {
     private String firstName;

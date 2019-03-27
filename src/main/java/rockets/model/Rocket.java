@@ -1,6 +1,7 @@
 package rockets.model;
 
 import java.util.Objects;
+
 import static org.apache.commons.lang3.Validate.notBlank;
 
 public class Rocket extends Entity {
