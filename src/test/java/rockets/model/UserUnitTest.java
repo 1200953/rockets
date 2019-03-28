@@ -106,7 +106,7 @@ public class UserUnitTest {
         assertFalse(target.isValidPassword(password));
     }
 
-    @DisplayName("should return password when set valid value")
+    @DisplayName("should return true when set valid password")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Abdel#1ad", "nonaACAS413%!and"})
     public void shouldReturnPasswordWhenSetValidValue(String password) {
