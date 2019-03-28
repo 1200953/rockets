@@ -1,5 +1,6 @@
 package rockets.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ class LaunchServiceProviderUnitTest {
     private LaunchServiceProvider target;
 
     @BeforeEach
-    void setUp() {
+    private void setUp() {
         target = new LaunchServiceProvider("abc", 2019, "US");
     }
 

@@ -43,14 +43,14 @@ public class Launch extends Entity {
         return launchDate;
     }
 
-    public String setLaunchDate(LocalDate launchDate) {
+    public boolean setLaunchDate(LocalDate launchDate) {
         notNull(launchDate,"launch date cannot be null");
         if (isNotBefore19000101(launchDate)){
             this.launchDate = launchDate;
-            return null;
+            return true;
         }
         else {
-            return "launch date should pass 1900-01-01";
+            throw new IllegalArgumentException("launch date should pass 1900-01-01");
         }
     }
 

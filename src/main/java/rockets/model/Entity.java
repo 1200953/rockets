@@ -20,9 +20,10 @@ public abstract class Entity {
         return id;
     }
 
-    public void setId(Long id) {
+    public boolean setId(Long id) {
         notNull(id, "id cannot be null");
         this.id = id;
+        return true;
     }
 
     protected boolean isCountry(String country) {

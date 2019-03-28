@@ -1,14 +1,18 @@
 package rockets.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +32,21 @@ class LaunchUnitTest {
         assertEquals("id cannot be null", exception.getMessage());
     }
 
+    @DisplayName("should return true when pass a valid id to setId function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(longs = {0, 123, 1234567})
+    public void shouldPassWhenSetValidId(long id) {
+        assertTrue(target.setId(id));
+    }
+
     //Launch Date
+    @DisplayName("should return true when pass a valid launch date to setLaunchDate function")
+    @ParameterizedTest(name = "Test case #{index}: {0}-{1}-{2}")
+    @CsvSource({"1900,01,01","1950,02,02","2018,03,03"})
+    public void shouldPassWhenSetValidDate(int year, int mon, int day) {
+        assertTrue(target.setLaunchDate(LocalDate.of(year, mon, day)));
+    }
+
     @DisplayName("should throw exception when pass a null launch date to setLaunchDate function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchDateToNull() {
@@ -37,10 +55,12 @@ class LaunchUnitTest {
     }
 
     @DisplayName("should throw exception when set a launch date before 1900-01-01")
-    @Test
-    public void shouldNotBefore19000101() {
-        assertEquals("launch date should pass 1900-01-01",
-                target.setLaunchDate(LocalDate.of(1899,12,31)));
+    @ParameterizedTest(name = "Test case #{index}: {0}-{1}-{2}")
+    @CsvSource({"1899,12,31","1000,12,31","200,12,31"})
+    public void shouldNotBefore19000101(int year, int month, int day) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
+                -> target.setLaunchDate(LocalDate.of(year, month, day)));
+        assertEquals("launch date should pass 1900-01-01", exception.getMessage());
     }
 
     @DisplayName("should return true when pass the date in correct format YYYY-MM-DD")
@@ -49,25 +69,6 @@ class LaunchUnitTest {
         target.setLaunchDate(LocalDate.of(2019, 3, 23));
         assertEquals("2019-03-23", target.getLaunchDate().toString());
     }
-
-    //Payload
-//    @DisplayName("should throw exception when pass a null to setPayload function")
-//    @Test
-//    public void shouldThrowExceptionWhenSetPayloadToNull() {
-//        NullPointerException exception = assertThrows(NullPointerException.class, () -> target.setPayload(null));
-//        assertEquals("payload cannot be null", exception.getMessage());
-//    }
-//
-//    @DisplayName("should throw exception when pass a set with empty string to setPayload function")
-//    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-//    @ValueSource(strings = {"", " ", "  "})
-//    public void shouldThrowExceptionWhenSetPayloadToEmpty(Payload payroll) {
-//        Set<Payload> set = new HashSet<>();
-//        set.add(payroll);
-//        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-//        () -> target.setPayload(set));
-//        assertEquals("payload cannot be null or empty", exception.getMessage());
-//    }
 
     //Launch Site
     @DisplayName("should throw exception when pass a null launch site to setLaunchSite function")
