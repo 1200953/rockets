@@ -63,7 +63,7 @@ class LaunchUnitTest {
         assertEquals("launch date should pass 1900-01-01", exception.getMessage());
     }
 
-    @DisplayName("should return true when pass the date in correct format YYYY-MM-DD")
+    @DisplayName("should return true when pass the date in correct format yyyy-MM-dd")
     @Test
     public void shouldReturnSpecificDateFormat() {
         target.setLaunchDate(LocalDate.of(2019, 3, 23));
