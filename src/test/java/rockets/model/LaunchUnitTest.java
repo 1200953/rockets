@@ -71,6 +71,13 @@ class LaunchUnitTest {
     }
 
     //Launch Site
+    @DisplayName("should return true when pass a valid launch site to setLaunchSite function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"Vandenberg Air Force Base", "Mid-Atlantic Regional Spaceport ", "Kennedy Space Center"})
+    public void shouldPassWhenSetValidMassToOther(String site) {
+        assertTrue(target.setLaunchSite(site));
+    }
+
     @DisplayName("should throw exception when pass a null launch site to setLaunchSite function")
     @Test
     public void shouldThrowExceptionWhenSetLaunchSiteToNull() {
@@ -85,14 +92,6 @@ class LaunchUnitTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> target.setLaunchSite(launchSite));
         assertEquals("launch site cannot be null or empty", exception.getMessage());
-    }
-
-    @DisplayName("should return true when pass a valid launch site to setLaunchSite function")
-    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"A's", "adage", "garb"})
-    public void shouldReturnLaunchSiteWhenSetValidLaunchSite(String launchSite) {
-        target.setLaunchSite(launchSite);
-        assertEquals(launchSite, target.getLaunchSite());
     }
 
     //Orbit
@@ -114,10 +113,9 @@ class LaunchUnitTest {
 
     @DisplayName("should return true when pass a valid orbit to setOrbit function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"A's", "adage", "garb"})
+    @ValueSource(strings = {"LEO", "MEO", "HEO"})
     public void shouldReturnOrbitWhenSetValidOrbit(String orbit) {
-        target.setOrbit(orbit);
-        assertEquals(orbit, target.getOrbit());
+        assertTrue(target.setOrbit(orbit));
     }
 
     //Function
@@ -139,10 +137,9 @@ class LaunchUnitTest {
 
     @DisplayName("should return true when pass a valid string to setFunction function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"A's", "adage", "garb"})
+    @ValueSource(strings = {"weaponry", "ejection seats", "human spaceflight"})
     public void shouldReturnFunctionWhenSetValidFunction(String function) {
-        target.setFunction(function);
-        assertEquals(function, target.getFunction());
+        assertTrue(target.setFunction(function));
     }
 
     //Price
@@ -178,7 +175,7 @@ class LaunchUnitTest {
         assertEquals("launch outcome cannot be null", exception.getMessage());
     }
 
-    @DisplayName("should return true when pass SUCCESSFUL or FAILED")
+    @DisplayName("should return true when Enum Types are correct")
     @ParameterizedTest(name = "Enum type: {0}")
     @EnumSource(value = Launch.LaunchOutcome.class,
             names = {"SUCCESSFUL", "FAILED"})

@@ -89,27 +89,30 @@ public class Launch extends Entity {
         return launchSite;
     }
 
-    public void setLaunchSite(String launchSite) {
+    public boolean setLaunchSite(String launchSite) {
         notBlank(launchSite, "launch site cannot be null or empty");
         this.launchSite = launchSite;
+        return true;
     }
 
     public String getOrbit() {
         return orbit;
     }
 
-    public void setOrbit(String orbit) {
+    public boolean setOrbit(String orbit) {
         notBlank(orbit, "orbit cannot be null or empty");
         this.orbit = orbit;
+        return true;
     }
 
     public String getFunction() {
         return function;
     }
 
-    public void setFunction(String function) {
+    public boolean setFunction(String function) {
         notBlank(function, "function cannot be null or empty");
         this.function = function;
+        return true;
     }
 
     public BigDecimal getPrice() {
