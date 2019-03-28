@@ -44,6 +44,20 @@ public class LaunchServiceProvider extends Entity {
         rockets = Sets.newLinkedHashSet();
     }
 
+    public boolean setYearFounded(int yearFounded) {
+        this.yearFounded = yearFounded;
+        return true;
+    }
+
+    public boolean setCountry(String country) {
+        this.country = country;
+        return true;
+    }
+
+    public boolean setName(String name){
+        this.name = name;
+        return true;
+    }
     public String getName() {
         return name;
     }
@@ -64,13 +78,15 @@ public class LaunchServiceProvider extends Entity {
         return rockets;
     }
 
-    public void setHeadquarters(String headquarters) {
+    public boolean setHeadquarters(String headquarters) {
         notBlank(headquarters, "headquarters cannot be null or empty");
         this.headquarters = headquarters;
+        return true;
     }
 
-    public void setRockets(Set<Rocket> rockets) {
+    public boolean setRockets(Set<Rocket> rockets) {
         this.rockets = rockets;
+        return true;
     }
 
     @Override

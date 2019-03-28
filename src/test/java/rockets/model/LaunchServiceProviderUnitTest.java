@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LaunchServiceProviderUnitTest {
     private LaunchServiceProvider target;
@@ -100,11 +101,24 @@ class LaunchServiceProviderUnitTest {
         assertEquals("headquarters cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should return headquarters when pass a valid name to setHeadquarters function")
+    @DisplayName("should return true when pass a valid name to setHeadquarters function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"A's", "adage", "garb"})
+    @ValueSource(strings = {"Goddard Space Flight Center", "Kennedy Space Center", "Vandenberg Air Force Base"})
     public void shouldReturnHeadquartersWhenSetValidHeadquarters(String headquarters) {
-        target.setHeadquarters(headquarters);
-        assertEquals(headquarters, target.getHeadquarters());
+        assertTrue(target.setHeadquarters(headquarters));
+    }
+
+    @DisplayName("should return true when pass a valid name to setName function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"Antrix Corporation", "Arianespace", "China Aerospace Science and Technology Corporation"})
+    public void shouldReturnTrueIfValidName(String name) {
+        assertTrue(target.setName(name));
+    }
+
+    @DisplayName("should return true when pass a valid country to setCountry function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"China", "Canada", "United States"})
+    public void shouldReturnHeadquartersWhenSetValidCountry(String country) {
+        assertTrue(target.setCountry(country));
     }
 }
