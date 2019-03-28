@@ -70,21 +70,6 @@ public class Launch extends Entity {
         this.launchServiceProvider = launchServiceProvider;
     }
 
-//    public Set<String> getPayload() {
-//        return payload;
-//    }
-//
-//    public void setPayload(Set<String> payload) {
-//        notNull(payload, "payload cannot be null");
-//        for (String s : payload) {
-//            if (s.trim().equals(""))
-//                throw new IllegalArgumentException("payload cannot be null or empty");
-//            else
-//                this.payload = payload;
-//        }
-//
-//    }
-
     public String getLaunchSite() {
         return launchSite;
     }
