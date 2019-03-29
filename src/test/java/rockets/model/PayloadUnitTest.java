@@ -211,5 +211,24 @@ class PayloadUnitTest {
         assertEquals(function, target.getFunction());
     }
 
+    @DisplayName("should return true when two payload have same name")
+    @Test
+    public void shouldReturnTrueWhenUsersHaveSameName() {
+        String name = "Ares";
+        target.setName(name);
+        Payload payload_2 = new Payload();
+        payload_2.setName(name);
+        assertEquals(target, payload_2);
+    }
+
+    @DisplayName("should return true when two payload have different name")
+    @Test
+    public void shouldReturnTrueWhenUsersHaveDiffName() {
+        String name = "Ares";
+        target.setName(name);
+        Payload payload_2 = new Payload();
+        payload_2.setName("Altas");
+        assertNotEquals(target, payload_2);
+    }
 
 }

@@ -76,10 +76,7 @@ public class Payload extends Entity {
         if (o == null || getClass() != o.getClass())
             return false;
         Payload that = (Payload) o;
-        return Objects.equals(category, that.category) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(country, that.country) &&
-                Objects.equals(manufacturer, that.manufacturer);
+        return Objects.equals(name, that.name);
     }
 
     @Override
