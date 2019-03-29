@@ -35,7 +35,7 @@ class RocketUnitTest {
         assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
-    @DisplayName("should throw exception when initialize name not contains family")
+    @DisplayName("should throw exception when initialize name which does not contain family name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"Snack A", "Drag A", "A"})
     public void shouldThrowExceptionWhenSetNameNotContainsFamily(String name) {
@@ -61,6 +61,15 @@ class RocketUnitTest {
         assertEquals("family cannot be null or empty", exception.getMessage());
     }
 
+    @DisplayName("should throw exception when initialize family with uncapitalized word")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"falcon", "black Prince ", "Long march"})
+    public void shouldThrowExceptionWhenSetFamilyUC(String family) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new Rocket("Dragon A", family, "US", "Tesla"));
+        assertEquals("the first char in the name of rocket family should be upper case", exception.getMessage());
+    }
+
     @DisplayName("should throw exception when initialize family into an empty string")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
     @ValueSource(strings = {"", " ", "  "})
@@ -73,8 +82,8 @@ class RocketUnitTest {
     @DisplayName("should return true when initialize family with a valid family name")
     @Test
     public void shouldPassWhenSetValidFamily() {
-        String family = "Dragon";
-        target = new Rocket("Dragon A",family, "US", "Tesla");
+        String family = "Falcon";
+        target = new Rocket("Falcon 9",family, "US", "Tesla");
         assertEquals(family, target.getFamily());
     }
 

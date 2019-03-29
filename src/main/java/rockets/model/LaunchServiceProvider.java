@@ -68,8 +68,6 @@ public class LaunchServiceProvider extends Entity {
         }
         else
             throw new IllegalArgumentException("country name should be capitalized");
-
-
     }
 
     public boolean setName(String name){

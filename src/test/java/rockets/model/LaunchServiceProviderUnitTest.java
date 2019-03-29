@@ -190,6 +190,4 @@ class LaunchServiceProviderUnitTest {
     public void shouldReturnTrueIfValidName(String name) {
         assertTrue(target.setName(name));
     }
-
-
 }
