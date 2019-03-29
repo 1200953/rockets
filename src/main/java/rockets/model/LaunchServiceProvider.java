@@ -45,16 +45,35 @@ public class LaunchServiceProvider extends Entity {
     }
 
     public boolean setYearFounded(int yearFounded) {
-        this.yearFounded = yearFounded;
-        return true;
+        notBlank(name, "year founded cannot be null or empty");
+        if(is4Digits(yearFounded)){
+            if(isValidYear(yearFounded))
+            {
+                this.yearFounded = yearFounded;
+                return true;
+            }
+            else
+                throw new IllegalArgumentException("yearFounded should be in the range of 1900 to current year");
+        }
+        else
+            throw new IllegalArgumentException("year should only be 4 digits");
     }
 
     public boolean setCountry(String country) {
-        this.country = country;
-        return true;
+        notBlank(country, "country cannot be null or empty");
+        if(isCountry(country))
+        {
+            this.country = country;
+            return true;
+        }
+        else
+            throw new IllegalArgumentException("country name should be capitalized");
+
+
     }
 
     public boolean setName(String name){
+        notBlank(name, "name cannot be null or empty");
         this.name = name;
         return true;
     }
