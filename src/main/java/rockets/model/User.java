@@ -51,9 +51,9 @@ public class User extends Entity {
             this.password = password;
         }
         else {
-            throw new RuntimeException("password is invalid \n (at least 1 upper case letter,\n" +
+            throw new IllegalArgumentException("password is invalid \n (at least 1 upper case letter,\n" +
                     " at least 1 lowercase letter,\n at least 1 digits,\n at least 1 special character,\n" +
-                    " length must be greater than 8,\n");
+                    " length must not less than 8,\n");
         }
     }
 
