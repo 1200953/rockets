@@ -36,7 +36,7 @@ public class Payload extends Entity {
 
     public void setCountry(String country) {
         notBlank(country, "country cannot be null or empty");
-        if (isCountry(country))
+        if (isCapitalized(country))
             this.country = country;
         else
             throw new IllegalArgumentException("country should be capitalized on each word");

@@ -32,7 +32,7 @@ public class Rocket extends Entity {
         notBlank(family, "family cannot be null or empty");
         notBlank(country, "country cannot be null or empty");
         notBlank(manufacturer, "manufacturer cannot be null or empty");
-        if(isCountry(family))
+        if(isCapitalized(family))
             this.family = family;
         else
             throw new IllegalArgumentException("the first char in the name of rocket family should be upper case");
@@ -43,7 +43,7 @@ public class Rocket extends Entity {
         else {
             throw new IllegalArgumentException("name should contain family");
         }
-        if (isCountry(country)) {
+        if (isCapitalized(country)) {
             this.country = country;
         }
         else {
@@ -133,7 +133,6 @@ public class Rocket extends Entity {
                 ", massToOther='" + massToOther + '\'' +
                 '}';
     }
-
 
     private boolean containsFamily (String name) {
         return name.contains(family);

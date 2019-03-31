@@ -26,7 +26,7 @@ public abstract class Entity {
         return true;
     }
 
-    protected boolean isCountry(String country) {
+    protected boolean isCapitalized(String country) {
         String[] Words = country.split(" ");
         for (String w : Words) {
             if (!Character.isUpperCase(w.charAt(0))) {

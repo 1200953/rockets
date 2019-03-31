@@ -150,6 +150,15 @@ public class UserUnitTest {
         assertEquals(firstName, target.getFirstName());
     }
 
+    @DisplayName("should throw exception when pass an uncapitalized first name to setFirstName function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"jane"})
+    public void shouldThrowExceptionWhenSetUncapitalizedFirstName(String firstName) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setFirstName(firstName));
+        assertEquals("first name should be capitalized", exception.getMessage());
+    }
+
     //lastName
     @DisplayName("should throw exception when pass a empty value to setLastName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
@@ -173,5 +182,14 @@ public class UserUnitTest {
     public void shouldReturnLastNameWhenSetValidValue(String lastName) {
         target.setLastName(lastName);
         assertEquals(lastName, target.getLastName());
+    }
+
+    @DisplayName("should throw exception when pass an uncapitalized last name to setLastName function")
+    @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
+    @ValueSource(strings = {"jane"})
+    public void shouldThrowExceptionWhenSetUncapitalizedLastName(String lastName) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> target.setLastName(lastName));
+        assertEquals("last name should be capitalized", exception.getMessage());
     }
 }

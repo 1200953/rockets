@@ -34,7 +34,7 @@ public class LaunchServiceProvider extends Entity {
         else {
             throw new IllegalArgumentException("year should only be 4 digits");
         }
-        if (isCountry(country)) {
+        if (isCapitalized(country)) {
             this.country = country;
 
         }
@@ -61,7 +61,7 @@ public class LaunchServiceProvider extends Entity {
 
     public boolean setCountry(String country) {
         notBlank(country, "country cannot be null or empty");
-        if(isCountry(country))
+        if(isCapitalized(country))
         {
             this.country = country;
             return true;

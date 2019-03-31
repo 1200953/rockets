@@ -20,7 +20,10 @@ public class User extends Entity {
 
     public void setFirstName(String firstName) {
         notBlank(firstName, "first name cannot be null or empty");
-        this.firstName = firstName;
+        if (isCapitalized(firstName))
+            this.firstName = firstName;
+        else
+            throw new IllegalArgumentException("first name should be capitalized");
     }
 
     public String getLastName() {
@@ -29,7 +32,10 @@ public class User extends Entity {
 
     public void setLastName(String lastName) {
         notBlank(lastName, "last name cannot be null or empty");
-        this.lastName = lastName;
+        if (isCapitalized(lastName))
+            this.lastName = lastName;
+        else
+            throw new IllegalArgumentException("last name should be capitalized");
     }
 
     public String getEmail() {
