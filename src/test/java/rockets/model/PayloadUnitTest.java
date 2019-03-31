@@ -53,7 +53,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid name to setName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Star A", "Dragon B", "faith"})
+    @ValueSource(strings = {"Eutelsat", "Eutelsat W4", "Missile Defense Alarm System"})
     public void shouldReturnTrueWhenSetValidName(String name) {
         target.setName(name);
         assertEquals(name, target.getName());
@@ -96,7 +96,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid category to setCategory function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Probe", "Spacecraft", "Robot"})
+    @ValueSource(strings = {"Space Probe", "Spacecraft", "Tom the monkey"})
     public void shouldReturnTrueWhenSetValidCategory(String category) {
         target.setCategory(category);
         assertEquals(category, target.getCategory());
@@ -155,7 +155,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid manufacturer to setManufacturer function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Tesla", "NASA", "Virgin"})
+    @ValueSource(strings = {"Tesla", "SpaceQuest, Ltd", "Airbus Defence and Space"})
     public void shouldReturnTrueWhenSetValidManufacturer(String manufacturer) {
         target.setManufacturer(manufacturer);
         assertEquals(manufacturer, target.getManufacturer());
@@ -205,7 +205,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid function to setFunction function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Explore", "Experiment", "Test"})
+    @ValueSource(strings = {"Spaceflight"})
     public void shouldReturnTrueWhenSetValidFunction(String function) {
         target.setFunction(function);
         assertEquals(function, target.getFunction());

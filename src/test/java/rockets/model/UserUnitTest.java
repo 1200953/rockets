@@ -68,7 +68,7 @@ public class UserUnitTest {
 
     @DisplayName("should return true when pass a valid email to setEmail function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"abcdef@gmail.com", "adanca@student.monash.edu"})
+    @ValueSource(strings = {"asjdoanf@gmail.com", "asdad@student.monash.edu"})
     public void shouldReturnEmailWhenSetValid(String email) {
         target.setEmail(email);
         assertEquals(email, target.getEmail());
@@ -94,21 +94,21 @@ public class UserUnitTest {
 
     @DisplayName("should return true when pass a valid password")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Abc1&23*21", "ajs3do2s&BN1SD"})
+    @ValueSource(strings = {"asdASD123!@#"})
     public void shouldReturnTrueWhenPassAValidPassword(String password) {
         assertTrue(target.isValidPassword(password));
     }
 
     @DisplayName("should return false when pass an invalid email")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"adan123*da", "ADAN123*", "Aa1!x25s", "Aa1! adana", "adas123aAsd1"})
+    @ValueSource(strings = {"emailAddress", "emailAddress@.com.au", "email@address@gmail.com"})
     public void shouldReturnFalseWhenPassAnInvalidPassword(String password) {
         assertFalse(target.isValidPassword(password));
     }
 
     @DisplayName("should return true when set valid password")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Abdel#1ad", "nonaACAS413%!and"})
+    @ValueSource(strings = {"asdASD123!@#"})
     public void shouldReturnPasswordWhenSetValidValue(String password) {
         target.setPassword(password);
         assertEquals(password, target.getPassword());
