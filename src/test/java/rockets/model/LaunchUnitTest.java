@@ -34,7 +34,7 @@ class LaunchUnitTest {
 
     @DisplayName("should return true when pass a valid id to setId function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(longs = {0, 123, 1234567})
+    @ValueSource(longs = {0, 1234567})
     public void shouldPassWhenSetValidId(long id) {
         assertTrue(target.setId(id));
     }
@@ -73,7 +73,7 @@ class LaunchUnitTest {
     //Launch Site
     @DisplayName("should return true when pass a valid launch site to setLaunchSite function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Vandenberg Air Force Base", "Mid-Atlantic Regional Spaceport "})
+    @ValueSource(strings = {"Mid-Atlantic Regional Spaceport "})
     public void shouldPassWhenSetValidMassToOther(String site) {
         assertTrue(target.setLaunchSite(site));
     }
@@ -152,7 +152,7 @@ class LaunchUnitTest {
 
     @DisplayName("should return true if the price is set to be negative or 0")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"-1000","-1","0"})
+    @ValueSource(strings = {"-1","0"})
     public void shouldReturnTrueWhenSetPriceToNegative(String price_t) {
         BigDecimal price = new BigDecimal(price_t);
         assertEquals("price cannot be negative or 0", target.setPrice(price));

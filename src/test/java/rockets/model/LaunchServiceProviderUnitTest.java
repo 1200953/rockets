@@ -100,7 +100,7 @@ class LaunchServiceProviderUnitTest {
     //country
     @DisplayName("should return true when pass a valid country to setCountry function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"China", "United States"})
+    @ValueSource(strings = {"United States"})
     public void shouldReturnHeadquartersWhenSetValidCountry(String country) {
         assertTrue(target.setCountry(country));
     }
@@ -124,7 +124,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should throw exception when pass country with uncapitalized words to setCountry function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"south korea", "Czech republic", "canada"})
+    @ValueSource(strings = {"south korea", "Czech republic"})
     public void shouldThrowExceptionWhenCUnCapitalized(String cn) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> target.setCountry(cn));
@@ -134,7 +134,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should throw exception when initialize country with uncapitalized words")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"south korea", "Czech republic", "canada"})
+    @ValueSource(strings = {"south korea", "Czech republic"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> new LaunchServiceProvider("abc", 2019, country));
@@ -186,7 +186,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should return true when pass a valid name to setName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Antrix Corporation", "China Aerospace Science and Technology Corporation"})
+    @ValueSource(strings = {"China Aerospace Science and Technology Corporation"})
     public void shouldReturnTrueIfValidName(String name) {
         assertTrue(target.setName(name));
     }

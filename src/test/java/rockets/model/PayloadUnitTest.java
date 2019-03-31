@@ -53,7 +53,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid name to setName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Eutelsat", "Missile Defense Alarm System"})
+    @ValueSource(strings = {"Missile Defense Alarm System"})
     public void shouldReturnTrueWhenSetValidName(String name) {
         target.setName(name);
         assertEquals(name, target.getName());
@@ -116,7 +116,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid category to setCategory function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Space Probe", "Spacecraft", "Tom the monkey"})
+    @ValueSource(strings = {"Tom the monkey"})
     public void shouldReturnTrueWhenSetValidCategory(String category) {
         target.setCategory(category);
         assertEquals(category, target.getCategory());
@@ -141,7 +141,7 @@ class PayloadUnitTest {
 
     @DisplayName("should throw exception when pass a country uncapitalized")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"south korea", "Czech republic", "canada"})
+    @ValueSource(strings = {"south korea", "Czech republic"})
     public void shouldThrowExceptionWhenSetCountryToUncapitalized(String country) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setCountry(country));
@@ -150,7 +150,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid country to setCountry function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"South Korea", "Czech Republic", "Canada"})
+    @ValueSource(strings = {"South Korea", "Canada"})
     public void shouldReturnTrueWhenSetValidCountry(String country) {
         target.setCountry(country);
         assertEquals(country, target.getCountry());
@@ -175,7 +175,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid manufacturer to setManufacturer function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Tesla", "SpaceQuest, Ltd", "Airbus Defence and Space"})
+    @ValueSource(strings = {"SpaceQuest, Ltd"})
     public void shouldReturnTrueWhenSetValidManufacturer(String manufacturer) {
         target.setManufacturer(manufacturer);
         assertEquals(manufacturer, target.getManufacturer());
