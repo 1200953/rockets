@@ -100,7 +100,7 @@ class LaunchServiceProviderUnitTest {
     //country
     @DisplayName("should return true when pass a valid country to setCountry function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"China", "Canada", "United States"})
+    @ValueSource(strings = {"China", "United States"})
     public void shouldReturnHeadquartersWhenSetValidCountry(String country) {
         assertTrue(target.setCountry(country));
     }
