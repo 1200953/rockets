@@ -108,13 +108,13 @@ public class UserUnitTest {
 
     @DisplayName("should throw exception when set invalid password")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"asd123!@#", "ASD123!@#", "asdASD!@#", "asdASD123", "aA1!"})
+    @ValueSource(strings = {"asd123!@#", "ASD123!@#", "asdASD!@#", "asdASD123", "aA1!", "asdASD 123!@#"})
     public void shouldThrowExceptionWhenSetValidValue(String password) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setPassword(password));
        assertEquals("password is invalid \n (at least 1 upper case letter,\n" +
                " at least 1 lowercase letter,\n at least 1 digits,\n at least 1 special character,\n" +
-               " length must not less than 8,\n", exception.getMessage());
+               " cannot contains white space,\n length must not less than 8,\n", exception.getMessage());
     }
 
     @DisplayName("should return true when set valid password")
