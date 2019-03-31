@@ -108,7 +108,7 @@ public class UserUnitTest {
 
     @DisplayName("should throw exception when set invalid password")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"asdasd123!@#", "ASDASD123!Q#", "asdASDasd!@#", "asdASD123ASD", "Aa1@#Aa"})
+    @ValueSource(strings = {"asd123!@#", "ASD123!@#", "asdASD!@#", "asdASD123", "aA1!"})
     public void shouldThrowExceptionWhenSetValidValue(String password) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setPassword(password));
@@ -144,7 +144,7 @@ public class UserUnitTest {
 
     @DisplayName("should return true when pass a valid name to setFirstName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Vincent", "Andy"})
+    @ValueSource(strings = {"Jane"})
     public void shouldReturnFirstNameWhenSetValidValue(String firstName) {
         target.setFirstName(firstName);
         assertEquals(firstName, target.getFirstName());
@@ -169,7 +169,7 @@ public class UserUnitTest {
 
     @DisplayName("should return true when pass a valid last name to setLastName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Du", "Xie"})
+    @ValueSource(strings = {"Smith"})
     public void shouldReturnLastNameWhenSetValidValue(String lastName) {
         target.setLastName(lastName);
         assertEquals(lastName, target.getLastName());

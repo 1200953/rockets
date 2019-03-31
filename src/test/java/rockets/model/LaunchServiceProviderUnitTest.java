@@ -56,7 +56,7 @@ class LaunchServiceProviderUnitTest {
     //yearFounded
     @DisplayName("should throw exception when initialize yearFounded outside of 1900 to current year")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(ints = {1000, 1899, 2020})
+    @ValueSource(ints = {1899, 2020})
     public void shouldThrowWhenOutOfRange(int yearFounded) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> new LaunchServiceProvider("abc", yearFounded, "US"));
@@ -65,7 +65,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should throw exception when initialize yearFounded other than 4 digits")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(ints = {1, 999, 10000})
+    @ValueSource(ints = {999, 10000})
     public void shouldThrowWhenSetYearFoundedNotIn4Digits(int yearFounded) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()
                 -> new LaunchServiceProvider("abc", yearFounded, "US"));
@@ -74,7 +74,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should throw exception when pass a year outside of 1900 to current year to setYearFounded function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(ints = {1899, 2020,1888})
+    @ValueSource(ints = {1899, 2020})
     public void shouldThrowWhenOutOfRAnge(int year){
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setYearFounded(year));
@@ -83,7 +83,7 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should throw exception when pass a integer other than 4 digits to setYearFounded function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(ints = {1, 999, 10000})
+    @ValueSource(ints = {999, 10000})
     public void shouldThrowWhenNot4Digits(int year){
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> target.setYearFounded(year));
@@ -179,14 +179,14 @@ class LaunchServiceProviderUnitTest {
 
     @DisplayName("should return true when pass a valid name to setHeadquarters function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Goddard Space Flight Center", "Kennedy Space Center", "Vandenberg Air Force Base"})
+    @ValueSource(strings = {"Goddard Space Flight Center"})
     public void shouldReturnHeadquartersWhenSetValidHeadquarters(String headquarters) {
         assertTrue(target.setHeadquarters(headquarters));
     }
 
     @DisplayName("should return true when pass a valid name to setName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Antrix Corporation", "Arianespace", "China Aerospace Science and Technology Corporation"})
+    @ValueSource(strings = {"Antrix Corporation", "China Aerospace Science and Technology Corporation"})
     public void shouldReturnTrueIfValidName(String name) {
         assertTrue(target.setName(name));
     }

@@ -53,7 +53,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid name to setName function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Eutelsat", "Eutelsat W4", "Missile Defense Alarm System"})
+    @ValueSource(strings = {"Eutelsat", "Missile Defense Alarm System"})
     public void shouldReturnTrueWhenSetValidName(String name) {
         target.setName(name);
         assertEquals(name, target.getName());
@@ -200,7 +200,7 @@ class PayloadUnitTest {
 
     @DisplayName("should return true when pass valid manufacturer to setMass function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"1000 t", "192 t", "123 t"})
+    @ValueSource(strings = {"NASA"})
     public void shouldReturnTrueWhenSetValidMass(String mass) {
         target.setMass(mass);
         assertEquals(mass, target.getMass());

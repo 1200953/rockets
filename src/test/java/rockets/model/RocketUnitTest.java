@@ -37,18 +37,18 @@ class RocketUnitTest {
 
     @DisplayName("should throw exception when initialize name which does not contain family name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Snack A", "Drag A", "A"})
+    @ValueSource(strings = {"Falcom", "falcon", "Ares XIII"})
     public void shouldThrowExceptionWhenSetNameNotContainsFamily(String name) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Rocket(name, "Dragon", "US", "Tesla"));
-        assertEquals("name should contains family", exception.getMessage());
+                () -> new Rocket(name, "Falcon", "US", "Tesla"));
+        assertEquals("name should contain family", exception.getMessage());
     }
 
     @DisplayName("should return true when initialize name with a valid name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Dragon A", "Dragon B", "Dragon C"})
+    @ValueSource(strings = {"Falcon 5", "Falcon Heavy"})
     public void shouldPassWhenSetValidName(String name) {
-        target = new Rocket(name,"Dragon", "US", "Tesla");
+        target = new Rocket(name,"Falcon", "US", "Tesla");
         assertEquals(name, target.getName());
     }
 
@@ -66,7 +66,7 @@ class RocketUnitTest {
     @ValueSource(strings = {"falcon", "black Prince ", "Long march"})
     public void shouldThrowExceptionWhenSetFamilyUC(String family) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Rocket("Dragon A", family, "US", "Tesla"));
+                () -> new Rocket("Falcon 5", family, "US", "Tesla"));
         assertEquals("the first char in the name of rocket family should be upper case", exception.getMessage());
     }
 
@@ -142,7 +142,7 @@ class RocketUnitTest {
 
     @DisplayName("should return true when initialize manufacturer with a valid manufacturer name")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"Tesla", "NASA", "Virgin"})
+    @ValueSource(strings = {"NASA", "Sierra Nevada Corporation"})
     public void shouldPassWhenSetValidManufacturer(String manufacturer) {
         target = new Rocket("Dragon A", "Dragon", "US", manufacturer);
         assertEquals(manufacturer, target.getManufacturer());
@@ -160,7 +160,7 @@ class RocketUnitTest {
 
     @DisplayName("should return true when pass a valid massToLEO to setMassToLEO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"8.0 t", "9.0 t", "10.0 t"})
+    @ValueSource(strings = {"8.0 t", "310,000 lb"})
     public void shouldPassWhenSetValidMassToLEO(String massToLEO) {
         target.setMassToLEO(massToLEO);
         assertEquals(massToLEO, target.getMassToLEO());
@@ -178,7 +178,7 @@ class RocketUnitTest {
 
     @DisplayName("should return true when pass a valid massToGTO to setMassToGTO function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"4.0 t", "5.0 t", "6.0 t"})
+    @ValueSource(strings = {"8.0 t", "310,000 lb"})
     public void shouldPassWhenSetValidMassToGTO(String massToGTO) {
         target.setMassToGTO(massToGTO);
         assertEquals(massToGTO, target.getMassToGTO());
@@ -196,7 +196,7 @@ class RocketUnitTest {
 
     @DisplayName("should return true when pass a valid massToOther to setMassToOther function")
     @ParameterizedTest(name = "Test case #{index}: \"{0}\"")
-    @ValueSource(strings = {"1.0 t", "2.0 t", "3.0 t"})
+    @ValueSource(strings = {"13,550 to SSO"})
     public void shouldPassWhenSetValidMassToOther(String massToOther) {
         target.setMassToOther(massToOther);
         assertEquals(massToOther, target.getMassToOther());

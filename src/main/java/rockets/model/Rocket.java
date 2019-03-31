@@ -41,7 +41,7 @@ public class Rocket extends Entity {
             this.name = name;
         }
         else {
-            throw new IllegalArgumentException("name should contains family");
+            throw new IllegalArgumentException("name should contain family");
         }
         if (isCountry(country)) {
             this.country = country;
