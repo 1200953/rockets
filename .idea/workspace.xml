@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fa08a8d-be9d-4fdf-888e-33a2b72a0410" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventLog.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/Entity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/Launch$LaunchOutcome.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/Launch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/LaunchServiceProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/Payload.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/Rocket.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/rockets/model/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/rockets/model/LaunchServiceProviderUnitTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/rockets/model/LaunchUnitTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/rockets/model/PayloadUnitTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/rockets/model/RocketUnitTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/rockets/model/UserUnitTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,12 +34,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventLog.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EventLog.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EventLog.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="190">
-                <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <first_editor relative-caret-position="76">
+                <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -101,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RocketUnitTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RocketUnitTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/rockets/model/RocketUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="473">
@@ -156,6 +143,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="vinnnc" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="fit5171_2019_6" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -568,7 +560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554023119088</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="recover">
+      <created>1554081954061</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1554081954061</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -605,7 +604,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -619,7 +617,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3291592" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49866667" visible="true" weight="0.2866397" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49866667" visible="true" weight="0.2866397" />
       <window_info id="Structure" order="1" sideWeight="0.50133336" side_tool="true" weight="0.16923077" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -704,7 +702,8 @@
     <MESSAGE value="Add tests in LaunchServiceProviderUT&#10;Modify mutator methods in LaunchServiceProvider class" />
     <MESSAGE value="Modify the equals metjd in payload&#10;Add positive tests in PayloadTest&#10;update constructor in rocket class&#10;fix grammar mistakes&#10;update event log" />
     <MESSAGE value="Update test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update test case" />
+    <MESSAGE value="recover" />
+    <option name="LAST_COMMIT_MESSAGE" value="recover" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -995,21 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventLog.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="190">
-            <caret line="10" selection-start-line="10" selection-end-line="10" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/rockets/model/LaunchServiceProviderUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1805">
@@ -1084,6 +1068,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
           <caret line="144" column="28" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventLog.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="76">
+            <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
         </state>
       </provider>
     </entry>
