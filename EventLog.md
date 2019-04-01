@@ -10,3 +10,5 @@ Q3. Do we really need to check the format of localdate?
 discussed, case closed(28/03 Andy&Wenchu)
 
 note: In PayLoad class, only the name should be unique(29/03)
+
+test if loogged
