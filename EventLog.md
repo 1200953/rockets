@@ -11,4 +11,4 @@ discussed, case closed(28/03 Andy&Wenchu)
 
 note: In PayLoad class, only the name should be unique(29/03)
 
-test if logged
+test if loogged (test2)
